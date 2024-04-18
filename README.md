@@ -42,3 +42,5 @@ EXEMPLO DE COMMIT = "feat: Página de login" <br>
             <td>indicam a exclusão de arquivos, diretórios ou funcionalidades obsoletas ou não utilizadas, reduzindo o tamanho e a complexidade do projeto e mantendo-o mais organizado.</td>
         </tr>
     </table>
+
+    
