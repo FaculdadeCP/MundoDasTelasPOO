@@ -1,23 +1,12 @@
-from flask import Flask,url_for, render_template
+from flask import Flask
+#importando rota
+from routes.home import home_route
+
 
 #inicializacao
 app = Flask(__name__)
 
-#rotas
-@app.route('/')
-def ola_mundo():
-    titulo = "Gestão de usuários"
-    usuarios = [
-        {"nome": "Guilherme","Membro_ativo": True},
-        {"nome": "João","Membro_ativo": False},
-        {"nome": "Maria","Membro_ativo": True},
-    ]
-    return render_template("index.html",titulo=titulo, usuarios=usuarios)
-
-@app.route('/sobre')
-def pagina_sobre():
-    return "aaaaaa ?"
+app.register_blueprint(home_route)
 
 #execucao
 app.run(debug=True)
-
