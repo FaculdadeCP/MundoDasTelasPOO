@@ -68,3 +68,62 @@ class FormaPagamento(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     formaPagamento = db.Column(db.String(50))
     permiteParcela = db.Column(db.Boolean)
+
+# Modelo para Pedidos Cobranças
+class PedidoCobranca(db.Model):
+    __tablename__ = 'tb_PedidosCobrancas'
+    id = db.Column(db.Integer, primary_key=True)
+    Pedidos_id = db.Column(db.Integer, db.ForeignKey('tb_Pedidos.id'))
+    FormasPagamentos_id = db.Column(db.Integer, db.ForeignKey('tb_FormasPagamentos.id'))
+    temParcela = db.Column(db.Boolean)
+    DataCobrancaParcela = db.Column(db.Date)
+    quantiadeParcela = db.Column(db.Integer)
+    valorParcela = db.Column(db.Numeric)
+    ValorFrete = db.Column(db.Numeric)
+    valorTotalPedido = db.Column(db.Numeric)
+    pedido = db.relationship('Pedido', backref='cobrancas')
+    forma_pagamento = db.relationship('FormaPagamento', backref='cobrancas')
+
+# Modelo para Produtos
+class Produto(db.Model):
+    __tablename__ = 'tb_Produtos'
+    id = db.Column(db.Integer, primary_key=True)
+    Marca = db.Column(db.String(250))
+    Modelo = db.Column(db.String(250))
+    TamanhoTela = db.Column(db.Float)
+    tipoIluminacao = db.Column(db.String(20))
+    Proporcao = db.Column(db.String(20))
+    taxaContraste = db.Column(db.String(20))
+    tempoResposta = db.Column(db.String(20))
+    interfaseSaida = db.Column(db.String(20))
+    Cor = db.Column(db.String(20))
+    Brilho = db.Column(db.String(20))
+    ResolucaoMaxima = db.Column(db.String(20))
+    TaxaAtualizacao = db.Column(db.String(20))
+    Descricao = db.Column(db.String(250))
+    CaminhoImagem = db.Column(db.String(250))
+    Valor = db.Column(db.Numeric)
+    monitor = db.Column(db.Boolean)
+
+# Modelo para Pedidos Itens
+class PedidoItem(db.Model):
+    __tablename__ = 'tb_PedidosItens'
+    Pedidos_id = db.Column(db.Integer, db.ForeignKey('tb_Pedidos.id'), primary_key=True)
+    Produtos_id = db.Column(db.Integer, db.ForeignKey('tb_Produtos.id'), primary_key=True)
+    quantidade = db.Column(db.Integer)
+    valorItem = db.Column(db.Numeric)
+    descontoItem = db.Column(db.Float)
+    freteItem = db.Column(db.Float)
+    pedido = db.relationship('Pedido', backref='itens')
+    produto = db.relationship('Produto', backref='itens')
+
+# Modelo para Estoque
+class Estoque(db.Model):
+    __tablename__ = 'tb_Estoque'
+    Produtos_id = db.Column(db.Integer, db.ForeignKey('tb_Produtos.id'), primary_key=True)
+    fornecedores_id = db.Column(db.Integer, db.ForeignKey('tb_Fornecedores.id'), primary_key=True)
+    quantidade = db.Column(db.Integer)
+    dataEntrada = db.Column(db.Date)
+    dataSaida = db.Column(db.Date)
+    produto = db.relationship('Produto', backref='estoque')
+    fornecedor = db.relationship('Fornecedor', backref='estoque')

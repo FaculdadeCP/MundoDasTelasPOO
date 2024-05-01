@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Inicialização do objeto SQLAlchemy
 db.init_app(app)
 
+# Definindo Rotas
 app.register_blueprint(home_route)
 app.register_blueprint(cliente_route, url_prefix='/clientes')
 
