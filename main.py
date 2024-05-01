@@ -1,6 +1,7 @@
 #importando Bibliotecas
 from flask import Flask
-from database import db
+from database.database import db
+from routes.pessoa import pessoa_bp, pessoa_pesquisa
 
 #importando rota
 from routes.home import home_route
@@ -20,6 +21,9 @@ db.init_app(app)
 # Definindo Rotas
 app.register_blueprint(home_route)
 app.register_blueprint(cliente_route, url_prefix='/clientes')
+app.register_blueprint(pessoa_bp)
+app.register_blueprint(pessoa_pesquisa)
+
 
 #execucao
 

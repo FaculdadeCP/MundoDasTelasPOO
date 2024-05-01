@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente Encontrado</title>
+</head>
+<body>
+    <h1>Cliente Encontrado</h1>
+    {% if pessoa %}
+    <p>ID: {{ pessoa.id }}</p>
+    <p>Nome: {{ pessoa.nome }}</p>
+    <p>Sobrenome: {{ pessoa.sobrenome }}</p>
+    <p>Email: {{ pessoa.email }}</p>
+    {% else %}
+    <p>Nenhum cliente encontrado.</p>
+    {% endif %}
+</body>
+</html>

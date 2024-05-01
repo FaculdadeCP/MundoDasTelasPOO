@@ -1,9 +1,9 @@
-from database import db
+from database.database import db
 from datetime import datetime
 
 # Modelo para Pessoas
 class Pessoa(db.Model):
-    __tablename__ = 'tb_Pessoas'
+    __tablename__ = 'tb_pessoas'
     id = db.Column(db.Integer, primary_key=True)
     Nome = db.Column(db.String(250))
     Sobrenome = db.Column(db.String(250))
@@ -28,13 +28,15 @@ class Endereco(db.Model):
 
 # Modelo para Lista de Endereços
 class ListaEnderecos(db.Model):
-    __tablename__ = 'tb_ListaEnderecos'
-    Pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_Pessoas.id'), primary_key=True)
-    Enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_Enderecos.id'), primary_key=True)
+    __tablename__ = 'tb_listaenderecos'  # Verifique se está correto conforme o banco de dados
+    Pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_pessoas.id'), primary_key=True)  # Ajuste o nome da tabela conforme necessário
+    Enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_enderecos.id'), primary_key=True)
     NomeEndereco = db.Column(db.String(250))
-    pessoa = db.relationship('Pessoa', backref='lista_enderecos')
-    endereco = db.relationship('Endereco', backref='lista_enderecos')
 
+    # Relacionamentos
+    pessoa = db.relationship('Pessoa', backref=db.backref('lista_enderecos'))
+    endereco = db.relationship('Endereco', backref=db.backref('lista_enderecos', lazy=True))
+    
 # Modelo para Fornecedores
 class Fornecedor(db.Model):
     __tablename__ = 'tb_Fornecedores'
