@@ -1,131 +1,107 @@
 from database.database import db
 from datetime import datetime
-
-# Modelo para Pessoas
 class Pessoa(db.Model):
     __tablename__ = 'tb_pessoas'
     id = db.Column(db.Integer, primary_key=True)
-    Nome = db.Column(db.String(250))
-    Sobrenome = db.Column(db.String(250))
-    CpfCnpj = db.Column(db.String(20))
-    RG = db.Column(db.String(16))
-    Email = db.Column(db.String(250))
-    Senha = db.Column(db.String(250))
-    PJ = db.Column(db.Boolean)
+    nome = db.Column(db.String(250))
+    sobrenome = db.Column(db.String(250))
+    cpfcnpj = db.Column(db.String(20))
+    rg = db.Column(db.String(16))
+    email = db.Column(db.String(250))
+    senha = db.Column(db.String(250))
+    pj = db.Column(db.Boolean)
+    funcionarioloja = db.Column(db.Boolean)
+    enderecos = db.relationship('ListaEnderecos', backref='pessoa')
 
-# Modelo para Endereços
 class Endereco(db.Model):
-    __tablename__ = 'tb_Enderecos'
+    __tablename__ = 'tb_enderecos'
     id = db.Column(db.Integer, primary_key=True)
-    CEP = db.Column(db.String(10))
-    Logradouro = db.Column(db.String(250))
-    Numero = db.Column(db.Integer)
-    Bairro = db.Column(db.String(250))
-    Complemento = db.Column(db.String(250))
-    Estado = db.Column(db.String(2))
-    Cidade = db.Column(db.String(250))
-    Telefone = db.Column(db.String(14))
+    cep = db.Column(db.String(10))
+    logradouro = db.Column(db.String(250))
+    numero = db.Column(db.Integer)
+    bairro = db.Column(db.String(250))
+    complemento = db.Column(db.String(250))
+    estado = db.Column(db.String(2))
+    cidade = db.Column(db.String(250))
+    telefone = db.Column(db.String(14))
+    listaEnderecos = db.relationship('ListaEnderecos', backref='endereco')
 
-# Modelo para Lista de Endereços
 class ListaEnderecos(db.Model):
-    __tablename__ = 'tb_listaenderecos'  # Verifique se está correto conforme o banco de dados
-    Pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_pessoas.id'), primary_key=True)  # Ajuste o nome da tabela conforme necessário
-    Enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_enderecos.id'), primary_key=True)
-    NomeEndereco = db.Column(db.String(250))
+    __tablename__ = 'tb_listaenderecos'
+    pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_pessoas.id'), primary_key=True)
+    enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_enderecos.id'), primary_key=True)
+    nomeEndereco = db.Column(db.String(250))
 
-    # Relacionamentos
-    pessoa = db.relationship('Pessoa', backref=db.backref('lista_enderecos'))
-    endereco = db.relationship('Endereco', backref=db.backref('lista_enderecos', lazy=True))
-    
-# Modelo para Fornecedores
 class Fornecedor(db.Model):
-    __tablename__ = 'tb_Fornecedores'
+    __tablename__ = 'tb_fornecedores'
     id = db.Column(db.Integer, primary_key=True)
-    Enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_Enderecos.id'))
-    nomeEmpresa = db.Column(db.String(250))
+    enderecos_id = db.Column(db.Integer, db.ForeignKey('tb_enderecos.id'))
+    nome_empresa = db.Column(db.String(250))
     representante = db.Column(db.String(250))
-    telefoneRepresentante = db.Column(db.String(14))
-    CNPJ = db.Column(db.String(20))
+    telefone_representante = db.Column(db.String(14))
+    cnpj = db.Column(db.String(20))
     endereco = db.relationship('Endereco', backref='fornecedores')
 
-# Modelo para Status
 class Status(db.Model):
-    __tablename__ = 'tb_Status'
+    __tablename__ = 'tb_status'
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(50))
 
-# Modelo para Pedidos
 class Pedido(db.Model):
-    __tablename__ = 'tb_Pedidos'
+    __tablename__ = 'tb_pedidos'
     id = db.Column(db.Integer, primary_key=True)
-    Pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_Pessoas.id'))
-    Status_id = db.Column(db.Integer, db.ForeignKey('tb_Status.id'))
-    datahoraPedido = db.Column(db.Date)
+    pessoas_id = db.Column(db.Integer, db.ForeignKey('tb_pessoas.id'))
+    status_id = db.Column(db.Integer, db.ForeignKey('tb_status.id'))
+    datahora_pedido = db.Column(db.Date)
     pessoa = db.relationship('Pessoa', backref='pedidos')
     status = db.relationship('Status', backref='pedidos')
 
-# Modelo para Formas de Pagamento
 class FormaPagamento(db.Model):
-    __tablename__ = 'tb_FormasPagamentos'
+    __tablename__ = 'tb_formaspagamentos'
     id = db.Column(db.Integer, primary_key=True)
-    formaPagamento = db.Column(db.String(50))
-    permiteParcela = db.Column(db.Boolean)
+    forma_pagamento = db.Column(db.String(50))
+    permite_parcela = db.Column(db.Boolean)
 
-# Modelo para Pedidos Cobranças
 class PedidoCobranca(db.Model):
-    __tablename__ = 'tb_PedidosCobrancas'
+    __tablename__ = 'tb_pedidoscobrancas'
     id = db.Column(db.Integer, primary_key=True)
-    Pedidos_id = db.Column(db.Integer, db.ForeignKey('tb_Pedidos.id'))
-    FormasPagamentos_id = db.Column(db.Integer, db.ForeignKey('tb_FormasPagamentos.id'))
-    temParcela = db.Column(db.Boolean)
-    DataCobrancaParcela = db.Column(db.Date)
-    quantiadeParcela = db.Column(db.Integer)
-    valorParcela = db.Column(db.Numeric)
-    ValorFrete = db.Column(db.Numeric)
-    valorTotalPedido = db.Column(db.Numeric)
+    pedidos_id = db.Column(db.Integer, db.ForeignKey('tb_pedidos.id'))
+    formas_pagamentos_id = db.Column(db.Integer, db.ForeignKey('tb_formaspagamentos.id'))
+    tem_parcela = db.Column(db.Boolean)
+    data_cobranca_parcela = db.Column(db.Date)
+    quantidade_parcela = db.Column(db.Integer)
+    valor_parcela = db.Column(db.Numeric)
+    valor_frete = db.Column(db.Numeric)
+    valor_total_pedido = db.Column(db.Numeric)
     pedido = db.relationship('Pedido', backref='cobrancas')
     forma_pagamento = db.relationship('FormaPagamento', backref='cobrancas')
 
-# Modelo para Produtos
 class Produto(db.Model):
-    __tablename__ = 'tb_Produtos'
+    __tablename__ = 'tb_produtos'
     id = db.Column(db.Integer, primary_key=True)
-    Marca = db.Column(db.String(250))
-    Modelo = db.Column(db.String(250))
-    TamanhoTela = db.Column(db.Float)
-    tipoIluminacao = db.Column(db.String(20))
-    Proporcao = db.Column(db.String(20))
-    taxaContraste = db.Column(db.String(20))
-    tempoResposta = db.Column(db.String(20))
-    interfaseSaida = db.Column(db.String(20))
-    Cor = db.Column(db.String(20))
-    Brilho = db.Column(db.String(20))
-    ResolucaoMaxima = db.Column(db.String(20))
-    TaxaAtualizacao = db.Column(db.String(20))
-    Descricao = db.Column(db.String(250))
-    CaminhoImagem = db.Column(db.String(250))
-    Valor = db.Column(db.Numeric)
+    marca = db.Column(db.String(250))
+    modelo = db.Column(db.String(250))
+    tamanho_tela = db.Column(db.Float)
+    tipo_iluminacao = db.Column(db.String(20))
+    proporcao = db.Column(db.String(20))
+    taxa_contraste = db.Column(db.String(20))
+    tempo_resposta = db.Column(db.String(20))
+    interfase_saida = db.Column(db.String(20))
+    cor = db.Column(db.String(20))
+    brilho = db.Column(db.String(20))
+    resolucao_maxima = db.Column(db.String(20))
+    taxa_atualizacao = db.Column(db.String(20))
+    descricao = db.Column(db.String(250))
+    caminho_imagem = db.Column(db.String(250))
+    valor = db.Column(db.Numeric)
     monitor = db.Column(db.Boolean)
+    estoques = db.relationship('Estoque', backref='produto')
 
-# Modelo para Pedidos Itens
-class PedidoItem(db.Model):
-    __tablename__ = 'tb_PedidosItens'
-    Pedidos_id = db.Column(db.Integer, db.ForeignKey('tb_Pedidos.id'), primary_key=True)
-    Produtos_id = db.Column(db.Integer, db.ForeignKey('tb_Produtos.id'), primary_key=True)
-    quantidade = db.Column(db.Integer)
-    valorItem = db.Column(db.Numeric)
-    descontoItem = db.Column(db.Float)
-    freteItem = db.Column(db.Float)
-    pedido = db.relationship('Pedido', backref='itens')
-    produto = db.relationship('Produto', backref='itens')
-
-# Modelo para Estoque
 class Estoque(db.Model):
-    __tablename__ = 'tb_Estoque'
-    Produtos_id = db.Column(db.Integer, db.ForeignKey('tb_Produtos.id'), primary_key=True)
-    fornecedores_id = db.Column(db.Integer, db.ForeignKey('tb_Fornecedores.id'), primary_key=True)
+    __tablename__ = 'tb_estoque'
+    produtos_id = db.Column(db.Integer, db.ForeignKey('tb_produtos.id'), primary_key=True)
+    fornecedores_id = db.Column(db.Integer, db.ForeignKey('tb_fornecedores.id'), primary_key=True)
     quantidade = db.Column(db.Integer)
-    dataEntrada = db.Column(db.Date)
-    dataSaida = db.Column(db.Date)
-    produto = db.relationship('Produto', backref='estoque')
+    data_entrada = db.Column(db.Date)
+    data_saida = db.Column(db.Date)
     fornecedor = db.relationship('Fornecedor', backref='estoque')

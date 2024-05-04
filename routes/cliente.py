@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from database.cliente import CLIENTES
+from database.models import Pessoa 
 
 cliente_route = Blueprint('cliente', __name__)
 
@@ -22,10 +23,12 @@ def form_cliente ():
     return render_template('form_cliente.html')
 
 
-@cliente_route.route('/<int:cliente_id>')
-def detalhe_cliente (cliente_id):
-    """  """
-    return render_template('detalhe_cliente.html')
+
+@cliente_route.route('/cliente/<int:id>')
+def detalhe_cliente(id):
+    cliente = Pessoa.query.get_or_404(id)
+    return render_template('detalhe_cliente.html', cliente=cliente)
+
 
 
 @cliente_route.route('/<int:cliente_id>/edit')
@@ -44,3 +47,4 @@ def atualizar_cliente (cliente_id):
 def deletar_cliente (cliente_id):
     """ deletar informacoes do cliente"""
     pass
+

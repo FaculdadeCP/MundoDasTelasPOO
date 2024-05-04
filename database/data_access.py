@@ -31,3 +31,20 @@ def consultar_pessoa_por_nome(nome):
         cur.close()
         conn.close()
     return pessoa
+# ======================
+# Região: login
+# ======================
+def consultar_usuario(email, senha):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        # Uso de parâmetros nomeados para prevenir SQL Injection
+        cur.execute("SELECT * FROM tb_pessoas WHERE email = %s AND senha = %s", (email, senha))
+        pessoa = cur.fetchone()
+        return pessoa is not None
+    except Exception as e:
+        print(f"Erro ao validar login: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()

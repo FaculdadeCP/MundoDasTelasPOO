@@ -1,0 +1,104 @@
+/* Estilos Gerais do Navbar */
+.navbar {
+    background-color: #ffe600; /* Cor de fundo amarela */
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: space-between; /* Distribui espaço entre os itens */
+    padding: 0 1rem; /* Adiciona um pouco de padding horizontal */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra leve para dar profundidade */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    margin-right: 15px; /* Espaço entre logo e menu */
+    flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
+}
+
+.img-logo {
+    height: 80px; /* Ajuste o tamanho do logo conforme necessário */
+    vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
+}
+
+/* Estilos para Links */
+.nav-link {
+    color: black; /* Cor do texto dos links */
+    font-weight: bold; /* Torna o texto mais destacado */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 15px; /* Espaço entre os links */
+}
+
+/* Ajustes para centralizar o formulário de busca e o botão de perfil */
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ajusta o espaçamento entre os elementos */
+    flex-grow: 1; /* Cresce para usar o espaço disponível */
+}
+
+/* Estilos para o Formulário de Busca */
+.form-inline {
+    display: flex;
+    justify-content: center; /* Centraliza o formulário de busca */
+    flex-grow: 1; /* Permite que o formulário cresça e ocupe mais espaço */
+    max-width: none; /* Remove qualquer limite de largura máxima */
+}
+
+.form-control {
+    width: 100%; /* Ocupa todo o espaço disponível no formulário */
+    margin: 0 5px; /* Ajusta as margens para visualmente espaçar do botão */
+    border: 1px solid black; /* Borda para o campo de busca */
+}
+
+.btn-outline-success, .btn-outline-primary {
+    margin-left: 10px; /* Espaço após o botão de busca para separar do próximo botão */
+}
+
+
+.btn-outline-success:hover, .btn-outline-primary:hover {
+    background-color: grey; /* Cor de fundo do botão ao passar o mouse */
+    color: white; /* Cor do texto do botão ao passar o mouse */
+}
+
+footer {
+    background-color: #f8f9fa; /* Cor de fundo do rodapé */
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 10px 0; /* Padding superior e inferior para o rodapé */
+}
+
+.dropdown-menu {
+    background-color: #fff; /* Fundo branco para o dropdown */
+    border-color: #ccc; /* Borda cinza clara */
+}
+
+.dropdown-item {
+    color: black; /* Texto preto nos itens do dropdown */
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa; /* Fundo cinza claro ao passar o mouse */
+}
+
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        flex-direction: column; /* Stack the navbar content vertically on smaller screens */
+    }
+
+    
+
+    .navbar-toggler {
+        margin-left: auto; /* Ajusta o botão para o lado direito */
+    }
+
+    .form-inline, .btn-outline-primary {
+        width: 100%; /* Ajusta a largura para ocupar toda a linha */
+        margin-top: 5px; /* Espaço superior para separação clara dos elementos */
+    }
+
+    .form-control {
+        width: 100%; /* Faz o campo de busca ocupar toda a largura disponível em dispositivos menores */
+    }
+}
