@@ -15,6 +15,9 @@
     flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
 }
 
+/*Logo das redes sociais*/
+
+
 .img-logo {
     height: 80px; /* Ajuste o tamanho do logo conforme necessário */
     vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
@@ -46,7 +49,7 @@
 }
 
 .form-control {
-    width: 100%; /* Ocupa todo o espaço disponível no formulário */
+    width:40%; /* Ocupa todo o espaço disponível no formulário */
     margin: 0 5px; /* Ajusta as margens para visualmente espaçar do botão */
     border: 1px solid black; /* Borda para o campo de busca */
 }
@@ -101,4 +104,24 @@ footer {
     .form-control {
         width: 100%; /* Faz o campo de busca ocupar toda a largura disponível em dispositivos menores */
     }
+}
+
+
+.footer-logo{
+    display: flex;
+    align-items: center;
+    margin-right: 15px; /* Espaço entre logo e menu */
+    flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
+}
+
+
+.footer-ui{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer-img-redesSociais {
+    height: 30px; /* Ajuste o tamanho do logo conforme necessário */
+    vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
 }
