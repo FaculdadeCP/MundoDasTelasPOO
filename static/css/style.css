@@ -1,23 +1,41 @@
+/*Define as cores padroes do site
+  Exemplo de modo de uso
+  background-color: var(--dark-blue);
+*/
+:root {
+    --primary-blue: #36454f;
+    --dark-blue: #36494f;
+    --light-yellow: #263337;
+    --light-orange: #ebfaff;
+    --white: #FFFFFF;
+    --light-gray: #d7f5ff;
+    --black: #000000;
+    --textBlack: #000000;
+    --textGray: #ccc;
+    --textWrite: #ffffff;
+    --sombra: rgba(0,0,0,0.1)
+}
+
+
+/*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NAV BAR
+
+
+*/
+
 /* Estilos Gerais do Navbar */
+nav{
+    background-color: var(--primary-blue);
+}
+
+
 .navbar {
-    background-color: #ffe600; /* Cor de fundo amarela */
-    display: flex;
-    align-items: center; /* Alinha os itens verticalmente */
-    justify-content: space-between; /* Distribui espaço entre os itens */
     padding: 0 1rem; /* Adiciona um pouco de padding horizontal */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra leve para dar profundidade */
+    box-shadow: 0 2px 4px var(--sombra); /* Sombra leve para dar profundidade */
 }
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-right: 15px; /* Espaço entre logo e menu */
-    flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
-}
-
-/*Logo das redes sociais*/
-
-
+/*Logo principal*/
 .img-logo {
     height: 80px; /* Ajuste o tamanho do logo conforme necessário */
     vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
@@ -25,10 +43,8 @@
 
 /* Estilos para Links */
 .nav-link {
-    color: black; /* Cor do texto dos links */
+    color: var(--textBlack); /* Cor do texto dos links */
     font-weight: bold; /* Torna o texto mais destacado */
-    padding-top: 0;
-    padding-bottom: 0;
     margin-right: 15px; /* Espaço entre os links */
 }
 
@@ -51,28 +67,25 @@
 .form-control {
     width:40%; /* Ocupa todo o espaço disponível no formulário */
     margin: 0 5px; /* Ajusta as margens para visualmente espaçar do botão */
-    border: 1px solid black; /* Borda para o campo de busca */
+    border: 1px solid var(--black); /* Borda para o campo de busca */
 }
 
+/*Botão de buscar e */
 .btn-outline-success, .btn-outline-primary {
     margin-left: 10px; /* Espaço após o botão de busca para separar do próximo botão */
 }
 
 
 .btn-outline-success:hover, .btn-outline-primary:hover {
-    background-color: grey; /* Cor de fundo do botão ao passar o mouse */
-    color: white; /* Cor do texto do botão ao passar o mouse */
+    background-color: var(--sombra); /* Cor de fundo do botão ao passar o mouse */
+
 }
 
-footer {
-    background-color: #f8f9fa; /* Cor de fundo do rodapé */
-    text-align: center; /* Alinha o texto ao centro */
-    padding: 10px 0; /* Padding superior e inferior para o rodapé */
-}
+
 
 .dropdown-menu {
-    background-color: #fff; /* Fundo branco para o dropdown */
-    border-color: #ccc; /* Borda cinza clara */
+    background-color: var(--white); /* Fundo branco para o dropdown */
+    border-color: var(--textGray); /* Borda cinza clara */
 }
 
 .dropdown-item {
@@ -80,7 +93,7 @@ footer {
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa; /* Fundo cinza claro ao passar o mouse */
+    background-color: var(--textGray); /* Fundo cinza claro ao passar o mouse */
 }
 
 
@@ -89,8 +102,6 @@ footer {
     .navbar-collapse {
         flex-direction: column; /* Stack the navbar content vertically on smaller screens */
     }
-
-    
 
     .navbar-toggler {
         margin-left: auto; /* Ajusta o botão para o lado direito */
@@ -107,6 +118,49 @@ footer {
 }
 
 
+
+
+
+
+
+
+
+/*
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BODY
+
+
+Centraliza o corpo*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1550px;
+    margin: 0 auto;
+}
+
+
+
+
+
+  
+/*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FOOTER
+*/
+
+/*Geral */
+footer {
+    background-color: var(--primary-blue); /* Cor de fundo do rodapé */
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 10px 0; /* Padding superior e inferior para o rodapé */
+    box-shadow: 0 2px 4px var(--sombra); /* Sombra leve para dar profundidade */
+    width: 100%;
+    margin-top: auto; /* Empurra o footer para baixo */
+}
+
+
+/*Logo das Redes Sociais*/
 .footer-logo{
     display: flex;
     align-items: center;
@@ -114,14 +168,16 @@ footer {
     flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
 }
 
-
+/*Referente ao logo das redes sociais*/
 .footer-ui{
     display: flex;
     justify-content: center;
     list-style: none;
 }
 
+/*Logo redes sociais*/
 .footer-img-redesSociais {
     height: 30px; /* Ajuste o tamanho do logo conforme necessário */
     vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
 }
+
