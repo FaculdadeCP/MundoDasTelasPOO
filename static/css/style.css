@@ -43,7 +43,7 @@ nav{
 
 /* Estilos para Links */
 .nav-link {
-    color: var(--textBlack); /* Cor do texto dos links */
+    color: var(--textWrite); /* Cor do texto dos links */
     font-weight: bold; /* Torna o texto mais destacado */
     margin-right: 15px; /* Espaço entre os links */
 }
@@ -70,19 +70,28 @@ nav{
     border: 1px solid var(--black); /* Borda para o campo de busca */
 }
 
-/*Botão de buscar e */
+/*Botão de buscar e perfil */
 .btn-outline-success, .btn-outline-primary {
     margin-left: 10px; /* Espaço após o botão de busca para separar do próximo botão */
+    color: var(--textWrite);
+    border-color: var(--textWrite);
 }
 
 
+/*Muda a aparencia do botão ao passar por cima*/
 .btn-outline-success:hover, .btn-outline-primary:hover {
     background-color: var(--sombra); /* Cor de fundo do botão ao passar o mouse */
+    border-color: var(--black);
+}
 
+/*Muda a aparencia do botão ao clicar*/
+.btn-outline-success:active, .btn-outline-primary:active {
+    background-color: pink;
 }
 
 
 
+/* dropdown menu*/
 .dropdown-menu {
     background-color: var(--white); /* Fundo branco para o dropdown */
     border-color: var(--textGray); /* Borda cinza clara */
@@ -155,8 +164,9 @@ footer {
     text-align: center; /* Alinha o texto ao centro */
     padding: 10px 0; /* Padding superior e inferior para o rodapé */
     box-shadow: 0 2px 4px var(--sombra); /* Sombra leve para dar profundidade */
-    width: 100%;
+    width: 100%; /*Largura do footer*/
     margin-top: auto; /* Empurra o footer para baixo */
+    color: var(--textWrite);  /*Cor do texto*/
 }
 
 
