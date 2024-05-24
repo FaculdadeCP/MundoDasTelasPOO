@@ -1,6 +1,5 @@
 # routes/pessoa.py
 from flask import Blueprint, render_template, request
-from database.database import db
 from database.data_access import consultar_pessoa_por_nome
 
 pessoa_bp = Blueprint('pessoa', __name__, template_folder='../templates')
