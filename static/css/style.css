@@ -221,6 +221,17 @@ CARD*/
     padding-right: 10px;
     padding-bottom: 7px;
  }
+
+
+/*parte responsiva*/
+
+.countainerCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
 /*-----------------------------------*/
 
 
