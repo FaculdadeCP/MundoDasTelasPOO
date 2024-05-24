@@ -71,25 +71,18 @@ nav{
 }
 
 /*Botão de buscar e perfil */
-.btn-outline-success, .btn-outline-primary {
+.btn-outline, .btn-outline {
     margin-left: 10px; /* Espaço após o botão de busca para separar do próximo botão */
-    color: var(--textWrite);
+    color: var(--textWrite); 
     border-color: var(--textWrite);
 }
 
-
 /*Muda a aparencia do botão ao passar por cima*/
-.btn-outline-success:hover, .btn-outline-primary:hover {
-    background-color: var(--sombra); /* Cor de fundo do botão ao passar o mouse */
-    border-color: var(--black);
+.btn-outline:hover, .btn-outline:hover {
+    color: var(--black);
+    border-color: var(--white);
+    background-color: var(--white);
 }
-
-/*Muda a aparencia do botão ao clicar*/
-.btn-outline-success:active, .btn-outline-primary:active {
-    background-color: pink;
-}
-
-
 
 /* dropdown menu*/
 .dropdown-menu {
@@ -150,6 +143,85 @@ body {
 
 
 
+/*---------------------------------------
+CARD*/
+.product-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.discount-banner {
+    background: #ff5722;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+}
+
+.new-price {
+    color: #e91e63;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.payment-info {
+    color: #666;
+    font-size: 14px;
+}
+
+.btComprar {
+    background: #FF6500;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 200;
+    padding: 5px;
+    -webkit-box-shadow: 1px 1px 20px 0 #000000;
+    -moz-box-shadow: 1px 1px 20px 0 #000000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: auto;
+    cursor: pointer;
+    text-align: center;
+ }
+ 
+ .btComprar:hover {
+    background: #FF6500;
+    font-weight: bold;
+    border-radius: 8px;
+ }
+
+ .logo_carrinho{
+    width: 35px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+ }
+/*-----------------------------------*/
 
 
   
@@ -190,4 +262,8 @@ footer {
     height: 30px; /* Ajuste o tamanho do logo conforme necessário */
     vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
 }
+
+
+
+
 

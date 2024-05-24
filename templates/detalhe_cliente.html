@@ -3,9 +3,31 @@
 {% block title %}Detalhe do Cliente - {{ cliente.nome }}{% endblock %}
 
 {% block content %}
+<!--
 <div>
     <h2>{{ cliente.nome }}</h2>
     <p>Email: {{ cliente.email }}</p>
     <p>CPF/CNPJ: {{ cliente.cpfcnpj }}</p>
 </div>
+-->
+
+<!-- CARD  -->
+<div class="product-card">
+    <div class="product-image">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_835617-MLU70462000211_072023-O.webp" alt="Monitor Gamer KBM">
+    </div>
+    <div class="product-details">
+        <h3>Puxar do Banco NOME e descricao</h3>
+        <p class="old-price">R$ 1.200,00 COLOCA VALOR ANMIMAL</p>
+        <p class="new-price">R$ 1.099,99 COLOCA VALOR ANMIMAL</p>
+        <p class="payment-info">À vista no PIX</p>
+        <div class="btComprar">
+            <span><img src="{{ url_for('static', filename='images/WhiteisMan.svg') }}" alt="logo_carrinho" class="logo_carrinho"><strong>COMPRAR</strong></span>
+        </div>
+    </div>
+</div>
+
+
+
+
 {% endblock %}
