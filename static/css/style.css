@@ -227,10 +227,10 @@ CARD*/
 /*parte responsiva*/
 
 .countainerCards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: initial;
+  padding: 20px;
 }
 
 /*-----------------------------------*/
