@@ -3,18 +3,18 @@
   background-color: var(--dark-blue);
 */
 :root {
-    --primary-blue: #36454f;
-    --dark-blue: #36494f;
-    --light-yellow: #263337;
-    --light-orange: #ebfaff;
-    --white: #FFFFFF;
-    --light-gray: #d7f5ff;
-    --black: #000000;
-    --textBlack: #000000;
-    --textGray: #ccc;
-    --textWrite: #ffffff;
-    --sombra: rgba(0,0,0,0.1);
-    --laranja: #ff5722
+  --primary-blue: #36454f;
+  --dark-blue: #36494f;
+  --light-yellow: #263337;
+  --light-orange: #ebfaff;
+  --white: #FFFFFF;
+  --light-gray: #d7f5ff;
+  --black: #000000;
+  --textBlack: #000000;
+  --textGray: #ccc;
+  --textWrite: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --laranja: #ff5722;
 }
 
 
@@ -26,98 +26,126 @@ NAV BAR
 */
 
 /* Estilos Gerais do Navbar */
-nav{
-    background-color: var(--primary-blue);
+nav {
+  background-color: var(--primary-blue);
 }
 
 
 .navbar {
-    padding: 0 1rem; /* Adiciona um pouco de padding horizontal */
-    box-shadow: 0 2px 4px var(--sombra); /* Sombra leve para dar profundidade */
+  padding: 0 1rem;
+  /* Adiciona um pouco de padding horizontal */
+  box-shadow: 0 2px 4px var(--sombra);
+  /* Sombra leve para dar profundidade */
 }
 
 /*Logo principal*/
 .img-logo {
-    height: 80px; /* Ajuste o tamanho do logo conforme necessário */
-    vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
+  height: 80px;
+  /* Ajuste o tamanho do logo conforme necessário */
+  vertical-align: middle;
+  /* Alinha verticalmente com os outros itens do navbar */
 }
 
 /* Estilos para Links */
 .nav-link {
-    color: var(--textWrite); /* Cor do texto dos links */
-    font-weight: bold; /* Torna o texto mais destacado */
-    margin-right: 15px; /* Espaço entre os links */
+  color: var(--textWrite);
+  /* Cor do texto dos links */
+  font-weight: bold;
+  /* Torna o texto mais destacado */
+  margin-right: 15px;
+  /* Espaço entre os links */
 }
 
 /* Ajustes para centralizar o formulário de busca e o botão de perfil */
 .navbar-collapse {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Ajusta o espaçamento entre os elementos */
-    flex-grow: 1; /* Cresce para usar o espaço disponível */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Ajusta o espaçamento entre os elementos */
+  flex-grow: 1;
+  /* Cresce para usar o espaço disponível */
 }
 
 /* Estilos para o Formulário de Busca */
 .form-inline {
-    display: flex;
-    justify-content: center; /* Centraliza o formulário de busca */
-    flex-grow: 1; /* Permite que o formulário cresça e ocupe mais espaço */
-    max-width: none; /* Remove qualquer limite de largura máxima */
+  display: flex;
+  justify-content: center;
+  /* Centraliza o formulário de busca */
+  flex-grow: 1;
+  /* Permite que o formulário cresça e ocupe mais espaço */
+  max-width: none;
+  /* Remove qualquer limite de largura máxima */
 }
 
 .form-control {
-    width:40%; /* Ocupa todo o espaço disponível no formulário */
-    margin: 0 5px; /* Ajusta as margens para visualmente espaçar do botão */
-    border: 1px solid var(--black); /* Borda para o campo de busca */
+  width: 40%;
+  /* Ocupa todo o espaço disponível no formulário */
+  margin: 0 5px;
+  /* Ajusta as margens para visualmente espaçar do botão */
+  border: 1px solid var(--black);
+  /* Borda para o campo de busca */
 }
 
 /*Botão de buscar e perfil */
-.btn-outline, .btn-outline {
-    margin-left: 10px; /* Espaço após o botão de busca para separar do próximo botão */
-    color: var(--textWrite); 
-    border-color: var(--textWrite);
+.btn-outline,
+.btn-outline {
+  margin-left: 10px;
+  /* Espaço após o botão de busca para separar do próximo botão */
+  color: var(--textWrite);
+  border-color: var(--textWrite);
 }
 
 /*Muda a aparencia do botão ao passar por cima*/
-.btn-outline:hover, .btn-outline:hover {
-    color: var(--black);
-    border-color: var(--white);
-    background-color: var(--white);
+.btn-outline:hover,
+.btn-outline:hover {
+  color: var(--black);
+  border-color: var(--white);
+  background-color: var(--white);
 }
 
 /* dropdown menu*/
 .dropdown-menu {
-    background-color: var(--white); /* Fundo branco para o dropdown */
-    border-color: var(--textGray); /* Borda cinza clara */
+  background-color: var(--white);
+  /* Fundo branco para o dropdown */
+  border-color: var(--textGray);
+  /* Borda cinza clara */
 }
 
 .dropdown-item {
-    color: black; /* Texto preto nos itens do dropdown */
+  color: black;
+  /* Texto preto nos itens do dropdown */
 }
 
 .dropdown-item:hover {
-    background-color: var(--textGray); /* Fundo cinza claro ao passar o mouse */
+  background-color: var(--textGray);
+  /* Fundo cinza claro ao passar o mouse */
 }
 
 
 /* Responsividade */
 @media (max-width: 992px) {
-    .navbar-collapse {
-        flex-direction: column; /* Stack the navbar content vertically on smaller screens */
-    }
+  .navbar-collapse {
+    flex-direction: column;
+    /* Stack the navbar content vertically on smaller screens */
+  }
 
-    .navbar-toggler {
-        margin-left: auto; /* Ajusta o botão para o lado direito */
-    }
+  .navbar-toggler {
+    margin-left: auto;
+    /* Ajusta o botão para o lado direito */
+  }
 
-    .form-inline, .btn-outline-primary {
-        width: 100%; /* Ajusta a largura para ocupar toda a linha */
-        margin-top: 5px; /* Espaço superior para separação clara dos elementos */
-    }
+  .form-inline,
+  .btn-outline-primary {
+    width: 100%;
+    /* Ajusta a largura para ocupar toda a linha */
+    margin-top: 5px;
+    /* Espaço superior para separação clara dos elementos */
+  }
 
-    .form-control {
-        width: 100%; /* Faz o campo de busca ocupar toda a largura disponível em dispositivos menores */
-    }
+  .form-control {
+    width: 100%;
+    /* Faz o campo de busca ocupar toda a largura disponível em dispositivos menores */
+  }
 }
 
 
@@ -135,98 +163,107 @@ BODY
 
 Centraliza o corpo*/
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 1550px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1550px;
+  margin: 0 auto;
 }
 
+/*Cor de texto*/
+.textLaranja {
+  color: var(--laranja);
+}
 
+/*Texto localização*/
+.TextTituloLaranjaCentralizado {
+  display: flex;
+  align-items: center;
+}
 
 /*---------------------------------------
 CARD*/
 .product-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 220px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
 }
 
 .discount-banner {
-    background: #ff5722;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 4px;
+  background: #ff5722;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
 }
 
 .product-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 .product-details {
-    padding: 15px;
+  padding: 15px;
 }
 
 .product-details h3 {
-    font-size: 18px;
-    margin: 10px 0;
+  font-size: 18px;
+  margin: 10px 0;
 }
 
 .old-price {
-    text-decoration: line-through;
-    color: #888;
-    font-size: 14px;
+  text-decoration: line-through;
+  color: #888;
+  font-size: 14px;
 }
 
 .new-price {
-    color: #e91e63;
-    font-size: 22px;
-    font-weight: bold;
-    margin: 5px 0;
+  color: #e91e63;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px 0;
 }
 
 .payment-info {
-    color: #666;
-    font-size: 14px;
+  color: #666;
+  font-size: 14px;
 }
 
 .btComprar {
-    background: #FF6500;
-    border-radius: 8px;
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: 200;
-    padding: 5px;
-    -webkit-box-shadow: 1px 1px 20px 0 #000000;
-    -moz-box-shadow: 1px 1px 20px 0 #000000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: auto;
-    cursor: pointer;
-    text-align: center;
- }
- 
- .btComprar:hover {
-    background: var(--laranja);
-    font-weight: bold;
-    border-radius: 8px;
- }
+  background: #FF6500;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 200;
+  padding: 5px;
+  -webkit-box-shadow: 1px 1px 20px 0 #000000;
+  -moz-box-shadow: 1px 1px 20px 0 #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: auto;
+  cursor: pointer;
+  text-align: center;
+}
 
- .logo_carrinho{
-    width: 35px;
-    padding-right: 10px;
-    padding-bottom: 7px;
- }
+.btComprar:hover {
+  background: var(--laranja);
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.logo_carrinho {
+  width: 35px;
+  padding-right: 10px;
+  padding-bottom: 7px;
+}
 
 
 /*parte responsiva*/
 
-.countainerCards{
+.countainerCards {
   display: flex;
   flex-wrap: wrap;
   justify-content: initial;
@@ -236,7 +273,7 @@ CARD*/
 /*-----------------------------------*/
 
 
-  
+
 /*
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 FOOTER
@@ -244,35 +281,46 @@ FOOTER
 
 /*Geral */
 footer {
-    background-color: var(--primary-blue); /* Cor de fundo do rodapé */
-    text-align: center; /* Alinha o texto ao centro */
-    padding: 10px 0; /* Padding superior e inferior para o rodapé */
-    box-shadow: 0 2px 4px var(--sombra); /* Sombra leve para dar profundidade */
-    width: 100%; /*Largura do footer*/
-    margin-top: auto; /* Empurra o footer para baixo */
-    color: var(--textWrite);  /*Cor do texto*/
+  background-color: var(--primary-blue);
+  /* Cor de fundo do rodapé */
+  text-align: center;
+  /* Alinha o texto ao centro */
+  padding: 10px 0;
+  /* Padding superior e inferior para o rodapé */
+  box-shadow: 0 2px 4px var(--sombra);
+  /* Sombra leve para dar profundidade */
+  width: 100%;
+  /*Largura do footer*/
+  margin-top: auto;
+  /* Empurra o footer para baixo */
+  color: var(--textWrite);
+  /*Cor do texto*/
 }
 
 
 /*Logo das Redes Sociais*/
-.footer-logo{
-    display: flex;
-    align-items: center;
-    margin-right: 15px; /* Espaço entre logo e menu */
-    flex-grow: 0; /* Não cresce, mantendo o tamanho conforme o conteúdo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  /* Espaço entre logo e menu */
+  flex-grow: 0;
+  /* Não cresce, mantendo o tamanho conforme o conteúdo */
 }
 
 /*Referente ao logo das redes sociais*/
-.footer-ui{
-    display: flex;
-    justify-content: center;
-    list-style: none;
+.footer-ui {
+  display: flex;
+  justify-content: center;
+  list-style: none;
 }
 
 /*Logo redes sociais*/
 .footer-img-redesSociais {
-    height: 30px; /* Ajuste o tamanho do logo conforme necessário */
-    vertical-align: middle; /* Alinha verticalmente com os outros itens do navbar */
+  height: 30px;
+  /* Ajuste o tamanho do logo conforme necessário */
+  vertical-align: middle;
+  /* Alinha verticalmente com os outros itens do navbar */
 }
 
 
@@ -287,198 +335,198 @@ footer {
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------
 Login Cagada CSS*/
 
-  input {
-      outline: none;
-      border: none;
-  }
-  
-  button {
-      outline: none !important;
-      border: none;
-      background: transparent;
-  }
-  
-  button:hover {
-      cursor: pointer;
-  }
-  
-  
-  /*//////////////////////////////////////////////////////////////////
+input {
+  outline: none;
+  border: none;
+}
+
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
   [ Utility ]*/
-  .txt1 {
-    font-family: Poppins-Regular;
-    font-size: 13px;
-    line-height: 1.5;
-    color: #999999;
-  }
-  
-  .txt2 {
-    font-family: Poppins-Regular;
-    font-size: 13px;
-    line-height: 1.5;
-    color: #666666;
-  }
-  
+.txt1 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #999999;
+}
 
-  /*Countainer em volta do form do login*/
-  .container-login100 {
-    width: 100%;  
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background: #b8bad1;
-  }
-  
-  /* inputs do login*/
-  .wrap-login100 {
-    width: 960px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-  
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 177px 130px 33px 95px;
-  }
-  
-  /* Imagem do login*/
-  .login100-pic {
-    width: 316px;
-  }
-  
-  .login100-pic img {
-    max-width: 100%;
-  }
-  
-  /*titulo do login*/
-  .login100-form-title {
-    font-family: Poppins-Bold;
-    font-size: 24px;
-    color: var(--laranja);
-    line-height: 1.2;
-    text-align: center;
-  
-    width: 100%;
-    display: block;
-    padding-bottom: 54px;
-  }
-  
-  
-  /* inputs text*/
-  .wrap-input100 {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    margin-bottom: 10px;
-  }
-  
-  .input100 {
-    font-family: Poppins-Medium;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #666666;
-  
-    display: block;
-    width: 100%;
-    background: #e6e6e6;
-    height: 50px;
-    border-radius: 25px;
-    padding: 0 30px 0 68px;
-  }
-  
-  /*------------------------------------------------------------------
+.txt2 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666666;
+}
+
+
+/*Countainer em volta do form do login*/
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #b8bad1;
+}
+
+/* inputs do login*/
+.wrap-login100 {
+  width: 960px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 177px 130px 33px 95px;
+}
+
+/* Imagem do login*/
+.login100-pic {
+  width: 316px;
+}
+
+.login100-pic img {
+  max-width: 100%;
+}
+
+/*titulo do login*/
+.login100-form-title {
+  font-family: Poppins-Bold;
+  font-size: 24px;
+  color: var(--laranja);
+  line-height: 1.2;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+  padding-bottom: 54px;
+}
+
+
+/* inputs text*/
+.wrap-input100 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.input100 {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
+
+/*------------------------------------------------------------------
   [ Button ]*/
-  .container-login100-form-btn {
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.login100-form-btn {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  background: var(--laranja);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background: #333333;
+}
+
+
+
+/*------------------------------------------------------------------
+  [ Responsive ]*/
+@media (max-width: 992px) {
+  .wrap-login100 {
+    padding: 177px 90px 33px 85px;
+  }
+
+  .login100-pic {
+    width: 35%;
+  }
+
+  .login100-form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap-login100 {
+    padding: 100px 80px 33px 80px;
+  }
+
+  .login100-pic {
+    display: none;
+  }
+
+  .login100-form {
     width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 20px;
   }
-  
-  .login100-form-btn {
-    font-family: Montserrat-Bold;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #fff;
-    text-transform: uppercase;
-  
-    width: 100%;
-    height: 50px;
-    border-radius: 8px;
-    background: var(--laranja);
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 25px;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
+}
+
+@media (max-width: 576px) {
+  .wrap-login100 {
+    padding: 100px 15px 33px 15px;
   }
-  
-  .login100-form-btn:hover {
-    background: #333333;
-  }
-  
-  
-  
-  /*------------------------------------------------------------------
-  [ Responsive ]*/  
-  @media (max-width: 992px) {
-    .wrap-login100 {
-      padding: 177px 90px 33px 85px;
-    }
-  
-    .login100-pic {
-      width: 35%;
-    }
-  
-    .login100-form {
-      width: 50%;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .wrap-login100 {
-      padding: 100px 80px 33px 80px;
-    }
-  
-    .login100-pic {
-      display: none;
-    }
-  
-    .login100-form {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .wrap-login100 {
-      padding: 100px 15px 33px 15px;
-    }
-  }
+}
 
 
 
@@ -486,10 +534,83 @@ Login Cagada CSS*/
 
 
 
-
-
-
-
-
-
-  
+/*---------------------------------------------------------------------------------------------------------------------------------------------------
+FORMS*/
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex; /* Adiciona flexbox */
+  flex-direction: column; /* Define a direção dos itens como coluna */
+  gap: 15px; /* Adiciona espaço entre os itens */
+}
+.form-container h2 {
+  text-align: left;
+}
+.form-group {
+  position: relative;
+  padding: 8px;
+}
+.form-group label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  padding: 0 5px;
+  transition: all 0.2s ease;
+  color: #9b9b9b;
+  pointer-events: none;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: transparent;
+}
+.form-group input:focus, .form-group input:not(:placeholder-shown),
+.form-group textarea:focus, .form-group textarea:not(:placeholder-shown) {
+  padding-top: 20px;
+}
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: var(--laranja);
+}
+.form-group textarea {
+  padding: 12px; /* Garante que o textarea tenha o mesmo padding */
+}
+.form-group-half {
+  display: flex;
+  gap: 10px;
+}
+.form-group-half .form-group {
+  flex: 1;
+}
+.form-group input[type="checkbox"] {
+  width: auto;
+}
+.submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.submit-button button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button button:hover {
+  background-color: #0056b3;
+}

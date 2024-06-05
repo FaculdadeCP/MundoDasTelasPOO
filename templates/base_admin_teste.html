@@ -1,74 +1,80 @@
-<!DOCTYPE html>
-<html lang="pt">
+{% extends 'base_admin.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Mundo das Telas{% endblock %}</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-
-
-    <header>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
-                <!-- Logo e Toggle Button -->
-                <a class="navbar-brand" href="#">
-                    <img src="{{ url_for('static', filename='images/logoMundoDasTelas.png') }}" alt="Logo"
-                        class="img-logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Navbar links and search form -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">TELA TESTE</a>
-                        </li>
-                        
-                    </ul>
-                    <!-- Meu Perfil -->
-                    <button class="btn btn-outline my-2 my-sm-0" type="button">MEU PERFIL</button>
-                </div>
+{% block content %}
+<div class="form-container">
+    <h2>Cadastro de Produto</h2>
+    <form action="/cadastrar_produto" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" id="marca" name="marca" required placeholder=" ">
+            <label for="marca">Marca</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="modelo" name="modelo" required placeholder=" ">
+            <label for="modelo">Modelo</label>
+        </div>
+        <div class="form-group">
+            <input type="number" step="0.01" id="tamanho_tela" name="tamanho_tela" required placeholder=" ">
+            <label for="tamanho_tela">Tamanho da Tela</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="tipo_iluminacao" name="tipo_iluminacao" placeholder=" ">
+            <label for="tipo_iluminacao">Tipo de Iluminação</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="proporcao" name="proporcao" placeholder=" ">
+            <label for="proporcao">Proporção</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="taxa_contraste" name="taxa_contraste" placeholder=" ">
+            <label for="taxa_contraste">Taxa de Contraste</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="tempo_resposta" name="tempo_resposta" placeholder=" ">
+            <label for="tempo_resposta">Tempo de Resposta</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="interfase_saida" name="interfase_saida" placeholder=" ">
+            <label for="interfase_saida">Interface de Saída</label>
+        </div>
+        <div class="form-group-half">
+            <div class="form-group">
+                <input type="text" id="cor" name="cor" placeholder=" ">
+                <label for="cor">Cor</label>
             </div>
-        </nav>
-
-    </header>
-
-    <main>
-        {% block content %}
-        <!-- O conteúdo específico da página será inserido aqui -->
-        {% endblock %}
-    </main>
-
-    
-
-
-
-
-    <footer>
-        
- 
-
-
-
-
-        <p>© 2024 Mundo das Telas. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Bootstrap JS e dependências -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+            <div class="form-group">
+                <input type="text" id="brilho" name="brilho" placeholder=" ">
+                <label for="brilho">Brilho</label>
+            </div>
+        </div>
+        <div class="form-group-half">
+            <div class="form-group">
+                <input type="text" id="resolucao_maxima" name="resolucao_maxima" placeholder=" ">
+                <label for="resolucao_maxima">Resolução Máxima</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="taxa_atualizacao" name="taxa_atualizacao" placeholder=" ">
+                <label for="taxa_atualizacao">Taxa de Atualização</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea id="descricao" name="descricao" rows="4" placeholder=" "></textarea>
+            <label for="descricao">Descrição</label>
+        </div>
+        <div class="form-group">
+            <input type="file" id="caminho_imagem" name="caminho_imagem" placeholder=" ">
+            <label for="caminho_imagem">Imagem</label>
+        </div>
+        <div class="form-group">
+            <input type="number" step="0.01" id="valor" name="valor" required placeholder=" ">
+            <label for="valor">Valor</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="monitor" name="monitor">
+            <label for="monitor">Monitor</label>
+        </div>
+        <div class="submit-button">
+            <button type="submit">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock %} <!-- AQUI FECHA O BODY-->
