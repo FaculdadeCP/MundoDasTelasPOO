@@ -57,7 +57,18 @@
                         <button class="btn btn-outline" type="submit">Buscar</button>
                     </form>
                     <!-- Meu Perfil -->
-                    <button class="btn btn-outline my-2 my-sm-0" type="button">MEU PERFIL</button>
+                    {% if session.logged_in %}
+                    <a href="{{ url_for('perfil.perfil') }}">
+                        <button class="btn btn-outline my-2 my-sm-0" type="button">MEU PERFIL</button>
+                    </a>
+                    <a href="{{ url_for('acesso.logout') }}">
+                        <button class="btn btn-outline my-2 my-sm-0" type="button">Sair</button>
+                    </a>
+                {% else %}
+                <a href="{{ url_for('acesso.login') }}">
+                        <button class="btn btn-outline my-2 my-sm-0" type="button">ACESSAR</button>
+                    </a>
+                {% endif %}
                 </div>
             </div>
         </nav>

@@ -5,13 +5,21 @@ import psycopg2.extras
 
 produto_bp = Blueprint('produto', __name__)
 
-@produto_bp.route('/')
+@produto_bp.route('/produtos')
 def exibir_produtos():
+    print("Iniciando a função exibir_produtos")
     conn = get_db_connection()
+    if conn is None:
+        print("Erro ao conectar ao banco de dados.")
+        return render_template('error.html', message="Erro ao conectar ao banco de dados.")
+    
     cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     try:
         cur.execute("SELECT * FROM tb_produtos")
         produtos_data = cur.fetchall()
+        if not produtos_data:
+            print("Nenhum produto encontrado.")
+            return render_template('error.html', message="Nenhum produto encontrado.")
         
         produtos = []
         for produto_data in produtos_data:
@@ -36,6 +44,7 @@ def exibir_produtos():
             }
             produtos.append(produto)
         
+        print(f"Produtos carregados: {produtos}")
         return render_template('index.html', produtos=produtos)
     except Exception as e:
         print(f"Erro ao consultar produtos: {e}")

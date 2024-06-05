@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo, {{ session.user_email }}!</h1>
+<p>Esta é a página do seu perfil.</p>
+<a href="{{ url_for('acesso.logout') }}">Logout</a>
+{% endblock %} <!-- AQUI FECHA O BODY-->
