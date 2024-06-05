@@ -19,7 +19,7 @@ app.register_blueprint(home_route)
 app.register_blueprint(cliente_route, url_prefix='/clientes')
 app.register_blueprint(pessoa_bp, url_prefix='/pessoas')
 app.register_blueprint(pessoa_pesquisa, url_prefix='/pessoas')
-app.register_blueprint(acesso, url_prefix='/acesso')
+app.register_blueprint(acesso, url_prefix='')
 app.register_blueprint(produto_bp, url_prefix='/produtos')
 
 if __name__ == '__main__':
