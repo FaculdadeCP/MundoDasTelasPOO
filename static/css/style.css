@@ -454,10 +454,11 @@ button:hover {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
+  max-width: 500px;
+  align-items: center;
 }
 
 .login100-form-btn {
@@ -487,7 +488,7 @@ button:hover {
 }
 
 .login100-form-btn:hover {
-  background: #333333;
+  background: var(--dark-blue);
 }
 
 
@@ -538,7 +539,7 @@ button:hover {
 FORMS*/
 .form-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -547,14 +548,17 @@ FORMS*/
   display: flex; /* Adiciona flexbox */
   flex-direction: column; /* Define a direção dos itens como coluna */
   gap: 15px; /* Adiciona espaço entre os itens */
+  align-self: center;
 }
 .form-container h2 {
-  text-align: left;
+  text-align: center;
 }
 .form-group {
   position: relative;
   padding: 8px;
+  max-width: 50%;
 }
+
 .form-group label {
   position: absolute;
   top: 12px;
@@ -597,20 +601,4 @@ FORMS*/
 }
 .form-group input[type="checkbox"] {
   width: auto;
-}
-.submit-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-.submit-button button {
-  padding: 10px 15px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.submit-button button:hover {
-  background-color: #0056b3;
 }
