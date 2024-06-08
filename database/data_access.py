@@ -47,6 +47,26 @@ def consultar_usuario(email, senha):
 # ======================
 # Região: Produtos
 # ======================
+def cadastro_produto(marca, modelo, tamanho_tela, tipo_iluminacao, proporcao, taxa_contraste, tempo_resposta, interface_saida, cor, brilho, resolucao_maxima, taxa_atualizacao, descricao, caminho_imagem, valor, monitor):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        
+        sql = """
+        INSERT INTO tb_produtos (marca, modelo, tamanhotela, tipoiluminacao, proporcao, taxacontraste, temporesposta, interfasesaida, cor, brilho, resolucaomaxima, taxaatualizacao, descricao, caminhoimagem, valor, monitor)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        cur.execute(sql, (marca, modelo, tamanho_tela, tipo_iluminacao, proporcao, taxa_contraste, tempo_resposta, interface_saida, cor, brilho, resolucao_maxima, taxa_atualizacao, descricao, caminho_imagem, valor, monitor))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao cadastrar produto: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+
 def consultar_produto_card(id):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)

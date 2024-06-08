@@ -3,9 +3,9 @@ from flask import Flask
 from database.database import db
 from routes.home import home_route
 from routes.acesso import acesso
-from routes.produto import produto_bp
 from routes.base_admin import administrador
 from routes.perfil import perfil_bp
+from routes.produto import produto_bp
 
 # Rota para apagar de TESTE
 from routes.TESTE import teste
@@ -20,9 +20,9 @@ db.init_app(app)
 
 app.register_blueprint(home_route)
 app.register_blueprint(acesso, url_prefix='')
-app.register_blueprint(produto_bp, url_prefix='/produtos')
 app.register_blueprint(administrador, url_prefix='')
 app.register_blueprint(perfil_bp, url_prefix='')
+app.register_blueprint(produto_bp, url_prefix='')
 app.register_blueprint(teste, url_prefix='')
 
 if __name__ == '__main__':

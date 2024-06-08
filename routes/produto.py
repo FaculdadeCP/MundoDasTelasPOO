@@ -1,54 +1,61 @@
-# routes/produto.py
-from flask import Blueprint, render_template
-from database.data_access import get_db_connection
-import psycopg2.extras
+import os
+from flask import Blueprint, render_template, request, redirect, url_for
+from classes.cls_Produto import Produto
+from static.s3_config import upload_to_s3
 
 produto_bp = Blueprint('produto', __name__)
 
-@produto_bp.route('/produtos')
-def exibir_produtos():
-    print("Iniciando a função exibir_produtos")
-    conn = get_db_connection()
-    if conn is None:
-        print("Erro ao conectar ao banco de dados.")
-        return render_template('error.html', message="Erro ao conectar ao banco de dados.")
+# Instancia a classe Produto
+produto_obj = Produto()
+
+@produto_bp.route('/produtos/tvs')
+def produtos_tvs():
+    return render_template('produtos_tvs.html')
+
+@produto_bp.route('/produtos/monitores')
+def produtos_monitores():
+    return render_template('produtos_monitores.html')
+
+@produto_bp.route('/produtos/cadastro', methods=['GET', 'POST'])
+def produtos_cadastro():
+    if request.method == 'POST':
+        # Recupera os dados do formulário
+        caminho_imagem = request.files.get('caminho_imagem')
+        
+        # Verifica se o arquivo foi enviado
+        if caminho_imagem and caminho_imagem.filename != '':
+            caminho_imagem.save(caminho_imagem.filename)  # Salva temporariamente
+            caminho_imagem_url = upload_to_s3(caminho_imagem.filename, caminho_imagem.filename)
+            os.remove(caminho_imagem.filename)  # Remove o arquivo temporário
+        else:
+            caminho_imagem_url = None
+        
+        dados_produto = {
+            "marca": request.form.get('marca'),
+            "modelo": request.form.get('modelo'),
+            "tamanho_tela": request.form.get('tamanho_tela'),
+            "tipo_iluminacao": request.form.get('tipo_iluminacao'),
+            "proporcao": request.form.get('proporcao'),
+            "taxa_contraste": request.form.get('taxa_contraste'),
+            "tempo_resposta": request.form.get('tempo_resposta'),
+            "interfase_saida": request.form.get('interfase_saida'),
+            "cor": request.form.get('cor'),
+            "brilho": request.form.get('brilho'),
+            "resolucao_maxima": request.form.get('resolucao_maxima'),
+            "taxa_atualizacao": request.form.get('taxa_atualizacao'),
+            "descricao": request.form.get('descricao'),
+            "caminho_imagem": caminho_imagem_url,  # O link da imagem no S3
+            "valor": request.form.get('valor'),
+            "monitor": request.form.get('monitor') == 'on'
+        }
+
+        # Chama o método de cadastro de produto passando os dados do formulário
+        sucesso = produto_obj.cadastrar_produto(dados_produto)
+        
+        if sucesso:
+            # Redireciona para uma página de sucesso ou outra página
+            return redirect(url_for('index.html'))
+        else:
+            return "Erro ao cadastrar produto", 500
     
-    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-    try:
-        cur.execute("SELECT * FROM tb_produtos")
-        produtos_data = cur.fetchall()
-        if not produtos_data:
-            print("Nenhum produto encontrado.")
-            return render_template('error.html', message="Nenhum produto encontrado.")
-        
-        produtos = []
-        for produto_data in produtos_data:
-            produto = {
-                'id': produto_data['id'],
-                'marca': produto_data['marca'],
-                'modelo': produto_data['modelo'],
-                'tamanho_tela': produto_data['tamanhotela'],
-                'tipo_iluminacao': produto_data['tipoiluminacao'],
-                'proporcao': produto_data['proporcao'],
-                'taxa_contraste': produto_data['taxacontraste'],
-                'tempo_resposta': produto_data['temporesposta'],
-                'interfase_saida': produto_data['interfasesaida'],
-                'cor': produto_data['cor'],
-                'brilho': produto_data['brilho'],
-                'resolucao_maxima': produto_data['resolucaomaxima'],
-                'taxa_atualizacao': produto_data['taxaatualizacao'],
-                'descricao': produto_data['descricao'],
-                'caminho_imagem': produto_data['caminhoimagem'],
-                'valor': produto_data['valor'],
-                'monitor': produto_data['monitor']
-            }
-            produtos.append(produto)
-        
-        print(f"Produtos carregados: {produtos}")
-        return render_template('index.html', produtos=produtos)
-    except Exception as e:
-        print(f"Erro ao consultar produtos: {e}")
-        return render_template('error.html', message="Erro ao carregar produtos.")
-    finally:
-        cur.close()
-        conn.close()
+    return render_template('produtos_cadastro.html')
