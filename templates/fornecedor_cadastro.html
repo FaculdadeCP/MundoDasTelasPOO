@@ -3,7 +3,7 @@
 {% block content %}
 <div class="form-container">
     <h2>Cadastro de Fornecedor</h2>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="/fornecedor/cadastro" method="post" enctype="multipart/form-data">
         <div class="form-group-half">
             <div class="form-group">
                 <input type="text" id="fornecedor" name="fornecedor" required placeholder=" " maxlength="250">
@@ -16,34 +16,35 @@
         </div>
         <div class="form-group-half">
             <div class="form-group">
-                <input type="tel" id="telefone_representante" name="telefone_representante" maxlength="15 "
-                    placeholder=" " onkeyup="handlePhone(event)" required>
+                <input type="tel" id="telefone_representante" name="telefone_representante" maxlength="15" placeholder=" " onkeyup="handlePhone(event)" required>
                 <label for="telefone_representante">Telefone do Representante</label>
             </div>
             <div class="form-group">
-                <input type="text" id="cnpj" name="cnpj" placeholder=" ">
+                <input type="text" id="cnpj" name="cnpj" placeholder=" " maxlength="20">
                 <label for="cnpj">CNPJ</label>
             </div>
         </div>
-
         <div class="container-btn-cadastrar">
             <button type="submit" class="btn-cadastrar">Cadastrar</button>
         </div>
     </form>
 </div>
 
+
+
+
 <script>
     const handlePhone = (event) => {
-        let input = event.target
-        input.value = phoneMask(input.value)
+        let input = event.target;
+        input.value = phoneMask(input.value);
     }
 
     const phoneMask = (value) => {
-        if (!value) return ""
-        value = value.replace(/\D/g, '')
-        value = value.replace(/(\d{2})(\d)/, "($1) $2")
-        value = value.replace(/(\d)(\d{4})$/, "$1-$2")
-        return value
+        if (!value) return "";
+        value = value.replace(/\D/g, '');
+        value = value.replace(/(\d{2})(\d)/, "($1) $2");
+        value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+        return value;
     }
 
     document.getElementById('cnpj').addEventListener('input', function (e) {
