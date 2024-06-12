@@ -660,7 +660,12 @@ FORMS*/
   padding: 2px;
 }
 
-
+.lnr-eye {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
 
 /*-----------------------------------------------------------------------------------------------------------------
 Tela de Consulta      */
@@ -688,3 +693,5 @@ Tela de Consulta      */
 .btn-atualizar:hover {
   background: var(--dark-blue);
 }
+
+
