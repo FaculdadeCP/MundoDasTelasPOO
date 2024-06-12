@@ -30,4 +30,4 @@ app.register_blueprint(fornecedor_cadastro_bp, url_prefix='')
 app.register_blueprint(funcionario_bp, url_prefix='')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 

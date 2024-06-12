@@ -175,7 +175,7 @@
             let input = event.target;
             input.value = cepMask(input.value);
         }
-
+ 
         const cepMask = (value) => {
             if (!value) return "";
             value = value.replace(/\D/g, '');          // Remove tudo o que não é dígito

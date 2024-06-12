@@ -10,3 +10,4 @@ def funcionario_cadastro():
 @funcionario_bp.route('/funcionario_consulta.html') # Rota do site
 def funcionario_consulta(): 
     return render_template('funcionario_consulta.html') # Página que vai redirecionar
+ 
