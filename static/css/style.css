@@ -659,3 +659,32 @@ FORMS*/
   margin-bottom: 15px;
   padding: 2px;
 }
+
+
+
+/*-----------------------------------------------------------------------------------------------------------------
+Tela de Consulta      */
+
+.container-btn-atualizar {
+
+  text-align: left;
+  /* Centraliza o conteúdo do contêiner */
+}
+
+.btn-atualizar {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--laranja);
+  transition: all 0.4s;
+  display: inline-block;
+  /* Permite centralizar o botão */
+  min-width: 70px;
+}
+
+.btn-atualizar:hover {
+  background: var(--dark-blue);
+}
