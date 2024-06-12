@@ -6,8 +6,26 @@ from database.models import Produto
 # ======================
 # Região: Banco de Dados
 # ======================
+def __init__(self):
+        pass
 
-# Função get_db_connection já importada do database
+def execute_query(self, query, params):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        cur.execute(query, params)
+        conn.commit()
+    except Exception as e:
+        print(f"Erro ao executar a query: {e}")
+        raise
+    finally:
+        cur.close()
+        conn.close()
+
+def log_error(self, action, error, user):
+    query = "INSERT INTO tb_logsErros (acao, Erro, usuario) VALUES (%s, %s, %s)"
+    params = (action, str(error), user)
+    self.execute_query(query, params)
 
 # ======================
 # Região: Pessoa
