@@ -40,7 +40,7 @@
                                 Produto
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
-                                <a class="dropdown-item" href="#">Novo Produto</a>
+                                <a class="dropdown-item" href="{{ url_for('produto.produtos_cadastro') }}">Novo Produto</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Consulta</a>
                             </div>
@@ -51,7 +51,7 @@
                                 Fornecedor
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
-                                <a class="dropdown-item" href="#">Novo Fornecedor</a>
+                                <a class="dropdown-item" href="{{ url_for('fornecedor.fornecedor_cadastro') }}">Novo Fornecedor</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Consulta</a>
                             </div>
@@ -61,7 +61,7 @@
                                 Funcionario
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
-                                <a class="dropdown-item" href="#">Novo Funcionario</a>
+                                <a class="dropdown-item" href="{{ url_for('funcionario.funcionario_cadastro') }}">Novo Funcionario</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Consulta</a>
                             </div>
