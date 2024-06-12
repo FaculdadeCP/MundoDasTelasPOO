@@ -552,7 +552,8 @@ FORMS*/
   gap: 15px;
   /* Adiciona espaço entre os itens */
   align-self: center;
-  min-height: 87.6vh; /* Use 100vh para ocupar toda a altura da janela */
+  min-height: 87.6vh;
+  /* Use 100vh para ocupar toda a altura da janela */
 }
 
 .form-container h2 {
@@ -625,7 +626,8 @@ FORMS*/
 
 .container-btn-cadastrar {
   width: 100%;
-  text-align: center; /* Centraliza o conteúdo do contêiner */
+  text-align: center;
+  /* Centraliza o conteúdo do contêiner */
   padding-top: 20px;
 }
 
@@ -640,10 +642,20 @@ FORMS*/
   background: var(--laranja);
   padding: 0 25px;
   transition: all 0.4s;
-  display: inline-block; /* Permite centralizar o botão */
+  display: inline-block;
+  /* Permite centralizar o botão */
   min-width: 400px;
 }
 
 .btn-cadastrar:hover {
   background: var(--dark-blue);
+}
+
+.divider {
+  width: 2px;
+  background-color: #ccc;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 2px;
 }

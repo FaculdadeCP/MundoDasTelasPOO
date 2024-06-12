@@ -2,69 +2,44 @@
 
 {% block content %}
 <div class="form-container">
-    <h2>Cadastro de Fornecedor</h2>
-    <form action="#" method="post" enctype="multipart/form-data">
-        <div class="form-group-half">
-            <div class="form-group">
-                <input type="text" id="fornecedor" name="fornecedor" required placeholder=" " maxlength="250">
-                <label for="fornecedor">Empresa</label>
-            </div>
-            <div class="form-group">
-                <input type="text" id="representante" name="representante" required placeholder=" " maxlength="250">
-                <label for="representante">Representante</label>
-            </div>
-        </div>
-        <div class="form-group-half">
-            <div class="form-group">
-                <input type="tel" id="telefone_representante" name="telefone_representante" maxlength="15 "
-                    placeholder=" " onkeyup="handlePhone(event)" required>
-                <label for="telefone_representante">Telefone do Representante</label>
-            </div>
-            <div class="form-group">
-                <input type="text" id="cnpj" name="cnpj" placeholder=" ">
-                <label for="cnpj">CNPJ</label>
-            </div>
-        </div>
+    <h2>Consulta de Funcionário</h2>
+    
 
-        <div class="container-btn-cadastrar">
-            <button type="submit" class="btn-cadastrar">Cadastrar</button>
-        </div>
-    </form>
-</div>
-
-<script>
-    const handlePhone = (event) => {
-        let input = event.target
-        input.value = phoneMask(input.value)
-    }
-
-    const phoneMask = (value) => {
-        if (!value) return ""
-        value = value.replace(/\D/g, '')
-        value = value.replace(/(\d{2})(\d)/, "($1) $2")
-        value = value.replace(/(\d)(\d{4})$/, "$1-$2")
-        return value
-    }
-
-    document.getElementById('cnpj').addEventListener('input', function (e) {
-        var value = e.target.value;
-        var rawValue = value.replace(/\D/g, ''); // Remove tudo que não é número
-
-        // Verifica se o CNPJ tem 15 dígitos e se o primeiro dígito é '0'
-        if (rawValue.length === 15 && rawValue.startsWith('0')) {
-            // Verifica se, ao remover o '0', o restante é um CNPJ válido
-            var potentialCNPJ = rawValue.substring(1);
-            // Atualiza rawValue para o CNPJ sem o '0' inicial
-            if (validaCNPJ(potentialCNPJ)) rawValue = potentialCNPJ;
-        }
-
-        var cnpjPattern = rawValue
-            .replace(/^(\d{2})(\d)/, '$1.$2') // Adiciona ponto após o segundo dígito
-            .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3') // Adiciona ponto após o quinto dígito
-            .replace(/\.(\d{3})(\d)/, '.$1/$2') // Adiciona barra após o oitavo dígito
-            .replace(/(\d{4})(\d)/, '$1-$2') // Adiciona traço após o décimo segundo dígito
-            .replace(/(-\d{2})\d+?$/, '$1'); // Impede a entrada de mais de 14 dígitos
-        e.target.value = cnpjPattern;
-    });
-</script>
-{% endblock %}
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">RG</th>
+            <th scope="col">E-Mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>470.874.857-54</td>
+            <td>169.854.965-4</td>
+            <td>mark@teste.com</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    {% endblock %}
