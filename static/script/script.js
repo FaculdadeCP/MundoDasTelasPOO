@@ -47,6 +47,27 @@ const phoneMask = (value) => {
     return value
 }
 
-/*  */
+/* Botão de adicionar quantidade de item no carrinho */
+
+document.addEventListener('DOMContentLoaded', function () {
+    const decrementButton = document.getElementById('lower');
+    const incrementButton = document.getElementById('more');
+    const quantityInput = document.getElementById('quantity');
+
+    decrementButton.addEventListener('click', function () {
+        let value = parseInt(quantityInput.value);
+        if (value > 1) {
+            value--;
+            quantityInput.value = value;
+        }
+    });
+
+    incrementButton.addEventListener('click', function () {
+        let value = parseInt(quantityInput.value);
+        value++;
+        quantityInput.value = value;
+    });
+});
 
 
+/*     */
