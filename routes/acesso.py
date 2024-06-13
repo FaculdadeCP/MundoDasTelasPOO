@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from routes.home import home_route
 from routes.base_admin import administrador
 from database.data_access import consultar_usuario
+from classes.cls_usuario import Usuario
+
 
 acesso = Blueprint('acesso', __name__)
 
@@ -34,7 +36,30 @@ def logout():
     session.pop('funcionarioloja', None)
     return redirect(url_for('acesso.login'))
 
-@acesso.route('/usuario_cadastro')
+@acesso.route('/usuario_cadastro', methods=['GET', 'POST'])
 def usuario_cadastro():
-    session.clear()  # Limpa a sessão antes de acessar a página de cadastro
-    return render_template('usuario_cadastro.html')
+    error_message = ''
+    if request.method == 'POST':
+        nome = request.form['nome']
+        sobrenome = request.form['sobrenome']
+        cpf = request.form['cpf']
+        rg = request.form['rg']
+        email = request.form['email']
+        senha = request.form['senha']
+        funcionario_loja = False  
+
+        usuario = Usuario()
+        sucesso = usuario.cadastrar_usuario({
+            'nome': nome,
+            'sobrenome': sobrenome,
+            'cpf': cpf,
+            'rg': rg,
+            'email': email,
+            'senha': senha,
+            'funcionario_loja': funcionario_loja
+        })
+
+        error_message = sucesso
+        return render_template('usuario_cadastro.html', error_message=error_message)
+    return render_template('usuario_cadastro.html', error_message=error_message)
+       
