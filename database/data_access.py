@@ -28,24 +28,7 @@ def log_error(self, action, error, user):
     self.execute_query(query, params)
 
 # ======================
-# Região: Pessoa
-# ======================
-def consultar_pessoa_por_nome(nome):
-    conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)  # Usar RealDictCursor
-    try:
-        cur.execute("SELECT * FROM tb_pessoas WHERE nome ILIKE %s", ('%' + nome + '%',))
-        pessoa = cur.fetchone()
-    except Exception as e:
-        print(f"Erro ao consultar pessoa por nome: {e}")
-        pessoa = None
-    finally:
-        cur.close()
-        conn.close()
-    return pessoa
-
-# ======================
-# Região: login
+# Região: Usuario
 # ======================
 def consultar_usuario(email, senha):
     conn = get_db_connection()
@@ -95,6 +78,7 @@ def consultar_Email(email):
     finally:
         cur.close()
         conn.close()
+
 # ======================
 # Região: Produtos
 # ======================
@@ -158,6 +142,7 @@ def consultar_produto_card(id):
 # ======================
 # Região: Funcionarios
 # ======================
+
 def consultar_funcionarios():
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -168,6 +153,44 @@ def consultar_funcionarios():
     except Exception as e:
         print(f"Erro ao carregar os Funcionários: {e}")
         return None
+    finally:
+        cur.close()
+        conn.close()
+
+def consultar_funcionario(id):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("")
+        lstFuncionarios = cur.fetchall()
+        return lstFuncionarios
+    except Exception as e:
+        print(f"Erro ao carregar os Funcionários: {e}")
+        return None
+    finally:
+        cur.close()
+        conn.close()
+
+# ======================
+# Região: Endereço
+# ======================
+def cadastro_endereco(cep,logradouro,numero,complemento,estado,cidade,telefone):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        
+        sql = """
+        INSERT INTO tb_enderecos (cep,logradouro,numero,bairro,complemento,estado,cidade,telefone)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        cur.execute(sql, (cep,logradouro,numero,complemento,estado,cidade,telefone))
+        conn.commit()
+        print(f"Cadastrou o endereço com sucesso!")
+        return True
+    except Exception as e:
+        print(f"Erro ao cadastrar endereço: {e}")
+        return False
     finally:
         cur.close()
         conn.close()
