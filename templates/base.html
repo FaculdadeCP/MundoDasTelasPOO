@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
                 <!-- Logo e Toggle Button -->
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ url_for('home.home') }}">
                     <img src="{{ url_for('static', filename='images/logoMundoDasTelas.png') }}" alt="Logo"
                         class="img-logo">
                 </a>
@@ -32,22 +32,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">GERAL</a>
+                            <a class="nav-link" href="{{ url_for('home.home') }}">GERAL</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">MONITORES</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPricing" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                TV
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
-                                <a class="dropdown-item" href="#">Basic</a>
-                                <a class="dropdown-item" href="#">Premium</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Enterprise</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TV</a>
                         </li>
                     </ul>
                     <!-- Barra de Busca -->
@@ -56,6 +47,10 @@
                             placeholder="Buscar por produtos, marcas e muito mais..." aria-label="Search" size="40%">
                         <button class="btn btn-outline" type="submit">Buscar</button>
                     </form>
+                    <a href="{{ url_for('carrinho.carrinho') }}">
+                        <img src="{{ url_for('static', filename='images/RelampagoCarlinhos.svg') }}" alt="Logo"
+                            class="img-carrinho-index">
+                    </a>
                     <!-- Meu Perfil -->
                     {% if session.logged_in %}
                     <a href="{{ url_for('perfil.perfil') }}">
@@ -64,11 +59,11 @@
                     <a href="{{ url_for('acesso.logout') }}">
                         <button class="btn btn-outline my-2 my-sm-0" type="button">Sair</button>
                     </a>
-                {% else %}
-                <a href="{{ url_for('acesso.login') }}">
+                    {% else %}
+                    <a href="{{ url_for('acesso.login') }}">
                         <button class="btn btn-outline my-2 my-sm-0" type="button">ACESSAR</button>
                     </a>
-                {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -81,17 +76,18 @@
         {% endblock %}
     </main>
 
-    
+
 
 
 
 
     <footer>
-        
+
         <ul class="footer-ui">
             <li>
                 <a class="footer-logo" {" href="#">
-                    <img src="{{ url_for('static', filename='images/logo_facebook.png') }}" alt="Logo" class="footer-img-redesSociais">
+                    <img src="{{ url_for('static', filename='images/logo_facebook.png') }}" alt="Logo"
+                        class="footer-img-redesSociais">
                 </a>
             </li>
             <li>
