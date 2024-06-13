@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, render_template, request, redirect, url_for
-from classes.cls_produto import Produto
+from classes.cls_Produto import Produto
 from static.s3_config import upload_to_s3
 
 produto_bp = Blueprint('produto', __name__)
