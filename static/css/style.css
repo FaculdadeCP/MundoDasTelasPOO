@@ -760,12 +760,6 @@ CARRINHO ----------------------*/
   align-items: center;
 }
 
-/* Detalhes do produto*/
-.product-details img, .service-details img {
-  height: 100px;
-  margin-right: 20px;
-}
-
 .product-info, .service-info {
   flex-grow: 1;
 }
