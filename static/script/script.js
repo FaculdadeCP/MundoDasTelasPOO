@@ -156,11 +156,14 @@ Password: <input type="password" value="FakePSW" id="myInput">
 <!-- An element to toggle between password visibility -->
 <input type="checkbox" onclick="myFunction()">Show Password */
 function myFunction() {
-    var x = document.getElementById("myInput");
+    var x = document.getElementById("senha");
+    var eyes = document.getElementById("icon");
     if (x.type === "password") {
       x.type = "text";
+      eyes.classList.toggle('hide');
     } else {
       x.type = "password";
+      eyes.classList.toggle('hide');
     }
   }
 
