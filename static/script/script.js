@@ -253,3 +253,21 @@ function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e){
 }
 
 /**    */
+
+function addProductToCart(productId) {
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    if (!cart.includes(productId)) {  // Evita adicionar duplicatas
+        cart.push(productId);
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        alert('Produto adicionado ao carrinho!');
+    } else {
+        alert('Produto já está no carrinho!');
+    }
+}
+
+function loadCartProducts() {
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    console.log('Produtos no carrinho:', cart);
+    // Aqui você pode implementar a lógica para mostrar os produtos no carrinho em outra página ou modal
+}
+/** */

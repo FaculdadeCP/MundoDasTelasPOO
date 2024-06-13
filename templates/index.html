@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="countainerCards">
-  {% for produto in produtos %} <!-- AQUI INICIA O LOOP DE PRODUTOS EM CARD -->
+  {% for produto in produtos %}
   <div class="product-card">
     <div class="product-image">
       <img src="{{ produto['caminho_imagem'] }}" alt="{{ produto['descricao'] }}">
@@ -12,8 +12,7 @@
     <div class="product-details">
       <h3>{{ produto['marca'] }} {{ produto['modelo'] }}</h3>
       <p class="new-price">R$ {{ "{:,.2f}".format(produto['valor']) }}</p>
-      <p class="payment-info">À vista no PIX</p>
-      <div class="btComprar">
+      <div class="btComprar" data-product-id="{{ produto['id'] }}" onclick="addProductToCart(this.getAttribute('data-product-id'))">
         <span>
           <img src="{{ url_for('static', filename='images/WhiteisMan.svg') }}" alt="logo_carrinho" class="logo_carrinho">
           <strong>COMPRAR</strong>
@@ -21,6 +20,6 @@
       </div>
     </div>
   </div>
-  {% endfor %} <!-- AQUI FECHA O LOOP DE PRODUTOS EM CARD -->
+  {% endfor %}
 </div>
-{% endblock %} <!-- AQUI FECHA O BODY-->
+{% endblock %}
