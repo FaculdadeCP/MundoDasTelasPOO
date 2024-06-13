@@ -48,20 +48,24 @@ def cadastrar_usuario(nome, sobrenome, cpf, rg, email, senha, funcionario_loja):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
-        cur.execute("""
-            INSERT INTO tb_pessoas (nome, sobrenome, cpfcnpj, rg, email, senha, funcionarioloja)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (nome, sobrenome, cpf, rg,email, senha, funcionario_loja))
-        conn.commit() 
-        return True
+        sql = """
+        INSERT INTO tb_pessoas (nome, sobrenome, cpfcnpj, rg, email, senha, funcionarioloja)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        RETURNING id  -- Adiciona isto para retornar o ID do usuário inserido
+        """
+        cur.execute(sql, (nome, sobrenome, cpf, rg, email, senha, funcionario_loja))
+        id_usuario = cur.fetchone()['id']  # Captura o ID retornado pela query
+        conn.commit()
+        print(f"Usuário cadastrado com sucesso! ID: {id_usuario}")
+        return id_usuario  # Retorna o ID do usuário
     except psycopg2.Error as e:
         print(f"Erro ao cadastrar usuário: {e}")
         conn.rollback()
-        return False
+        return None  # Retorna None se houver falha
     finally:
         cur.close()
         conn.close()
-        
+     
 def consultar_Email(email):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -79,8 +83,44 @@ def consultar_Email(email):
         cur.close()
         conn.close()
 
+def Vincular_Usuario_Endereco(usuarioId,EnderecoId,residencial,comercial):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        sql = """
+        INSERT INTO tb_enderecoslista (pessoa_id, endereco_id,residencial,comercial)
+        VALUES (%s, %s, %s,%s)
+        """
+        cur.execute(sql, (usuarioId,EnderecoId,residencial,comercial))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao cadastrar produto: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+
+def Vincular_usuario_cargo(usuarioId,cargo,ativo):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        sql = """
+        INSERT INTO tb_funcionarios (pessoa_id, cargo_id,ativo)
+        VALUES (%s, %s, %s)
+        """
+        cur.execute(sql, (usuarioId,cargo,ativo))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao cadastrar produto: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+        
 # ======================
-# Região: Produtos
+# Região: Produtos 
 # ======================
 def cadastro_produto(marca, modelo, tamanho_tela, tipo_iluminacao, proporcao, taxa_contraste, tempo_resposta, interface_saida, cor, brilho, resolucao_maxima, taxa_atualizacao, descricao, caminho_imagem, valor, monitor):
     conn = get_db_connection()
@@ -171,26 +211,58 @@ def consultar_funcionario(id):
         cur.close()
         conn.close()
 
+def atualizar_funcionario(id):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("")
+        lstFuncionarios = cur.fetchall()
+        return lstFuncionarios
+    except Exception as e:
+        print(f"Erro ao carregar os Funcionários: {e}")
+        return None
+    finally:
+        cur.close()
+        conn.close()
+
+
 # ======================
 # Região: Endereço
 # ======================
-def cadastro_endereco(cep,logradouro,numero,complemento,estado,cidade,telefone):
+def cadastro_endereco(cep, logradouro, numero, complemento, estado, cidade, telefone, bairro):
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        
-        
         sql = """
-        INSERT INTO tb_enderecos (cep,logradouro,numero,bairro,complemento,estado,cidade,telefone)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO tb_enderecos (cep, logradouro, numero, complemento, estado, cidade, telefone, bairro)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        RETURNING id  -- Aqui estamos pedindo para retornar o ID do novo endereço
         """
-        cur.execute(sql, (cep,logradouro,numero,complemento,estado,cidade,telefone))
+        cur.execute(sql, (cep, logradouro, numero, complemento, estado, cidade, telefone, bairro))
+        id_endereco = cur.fetchone()[0]  # Captura o ID retornado pela query
         conn.commit()
-        print(f"Cadastrou o endereço com sucesso!")
-        return True
+        print(f"Cadastrou o endereço com sucesso! ID: {id_endereco}")
+        return id_endereco
     except Exception as e:
         print(f"Erro ao cadastrar endereço: {e}")
-        return False
+        return None
+    finally:
+        cur.close()
+        conn.close()
+# ======================
+# Região: Cargos
+# ======================
+def consultar_Cargos():
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("SELECT * FROM tb_cargos")
+        lstCargos = cur.fetchall()
+        print(lstCargos)  # Veja o que está sendo retornado
+        return lstCargos
+    except Exception as e:
+        print(f"Erro ao carregar os cargos: {e}")
+        return None
     finally:
         cur.close()
         conn.close()
