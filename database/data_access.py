@@ -154,3 +154,20 @@ def consultar_produto_card(id):
     finally:
         cur.close()
         conn.close()
+        
+# ======================
+# Região: Funcionarios
+# ======================
+def consultar_funcionarios():
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("SELECT PS.nome, PS.sobrenome, PS.cpfcnpj, CG.cargo, FN.ativo FROM tb_funcionarios FN INNER JOIN tb_pessoas PS ON PS.id = FN.pessoa_id LEFT JOIN tb_cargos CG ON CG.id = FN.cargo_id ORDER BY FN.ativo DESC")
+        lstFuncionarios = cur.fetchall()
+        return lstFuncionarios
+    except Exception as e:
+        print(f"Erro ao carregar os Funcionários: {e}")
+        return None
+    finally:
+        cur.close()
+        conn.close()

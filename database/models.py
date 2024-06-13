@@ -105,3 +105,10 @@ class Estoque(db.Model):
     data_entrada = db.Column(db.Date)
     data_saida = db.Column(db.Date)
     fornecedor = db.relationship('Fornecedor', backref='estoque')
+    
+class Funcionario(db.Model):
+    __tablename__ = 'tb_funcionarios'
+    id = db.Column(db.Integer, primary_key=True)
+    pessoa_id = db.Column(db.Integer, db.ForeignKey('tb_pessoas.id'), primary_key=True)
+    cargo_id = db.Column(db.Integer, db.ForeignKey('tb_cargos.id'), primary_key=True)
+    ativo = db.Column(db.Boolean)
