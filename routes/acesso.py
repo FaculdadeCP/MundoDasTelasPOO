@@ -33,3 +33,8 @@ def logout():
     session.pop('logged_in', None)
     session.pop('funcionarioloja', None)
     return redirect(url_for('acesso.login'))
+
+@acesso.route('/usuario_cadastro')
+def usuario_cadastro():
+    session.clear()  # Limpa a sessão antes de acessar a página de cadastro
+    return render_template('usuario_cadastro.html')
