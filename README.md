@@ -1,5 +1,7 @@
 # MundoDasTelasPOO
-Projeto de faculdade, site de vendas de Monitores e telas online com Python seguindo POO
+<h1>Projeto de faculdade, site de vendas de Monitores e telas online com Python seguindo POO</h1>
+
+Estruturas do projeto:<br>
 
 PADRÕES DE COMMIT: <br>
 PARA O COMMIT USAR O TIPO : DESCRIÇÃO (PADRÃO GIT DE BOAS PRÁTICAS) <br>

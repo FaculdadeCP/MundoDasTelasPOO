@@ -66,7 +66,7 @@ def cadastrar_usuario(nome, sobrenome, cpf, rg, email, senha, funcionario_loja):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
         cur.execute("""
-            INSERT INTO tb_pessoas (nome, sobrenome, cpf, rg,email, senha, funcionarioloja)
+            INSERT INTO tb_pessoas (nome, sobrenome, cpfcnpj, rg, email, senha, funcionarioloja)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
             """, (nome, sobrenome, cpf, rg,email, senha, funcionario_loja))
         conn.commit() 
@@ -78,7 +78,23 @@ def cadastrar_usuario(nome, sobrenome, cpf, rg, email, senha, funcionario_loja):
     finally:
         cur.close()
         conn.close()
-
+        
+def consultar_Email(email):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        # Certifique-se de passar o e-mail como uma tupla, ou seja, (email,)
+        cur.execute("SELECT * FROM tb_pessoas WHERE email = %s", (email,))
+        retorno = cur.fetchone()
+        print(f"RETORNO CONSULTA SQL: {retorno}")
+        # Retorna True se um registro for encontrado, caso contrário, retorna False
+        return retorno is not None
+    except Exception as e:
+        print(f"Erro ao validar email: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
 # ======================
 # Região: Produtos
 # ======================
