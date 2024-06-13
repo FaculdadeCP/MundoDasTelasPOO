@@ -8,6 +8,7 @@ from routes.perfil import perfil_bp
 from routes.produto import produto_bp
 from routes.fornecedor import fornecedor_cadastro_bp
 from routes.funcionario import funcionario_bp
+from routes.carrinho import carrinho_bp
 
 # Rota para apagar de TESTE
 from routes.TESTE import teste
@@ -28,6 +29,7 @@ app.register_blueprint(produto_bp, url_prefix='')
 app.register_blueprint(teste, url_prefix='')
 app.register_blueprint(fornecedor_cadastro_bp, url_prefix='')
 app.register_blueprint(funcionario_bp, url_prefix='')
+app.register_blueprint(carrinho_bp,url_prefix='')
 
 if __name__ == '__main__':
     app.run(debug=True) 
