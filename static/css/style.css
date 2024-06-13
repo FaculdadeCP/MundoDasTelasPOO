@@ -149,8 +149,12 @@ nav {
 }
 
 
-
-
+/*Carrinho de compra*/
+.img-carrinho-index{
+  height: 30px;
+  width: 30px;
+  margin-right: 30px;
+}
 
 
 
