@@ -149,17 +149,20 @@ document.getElementById('enderecoForm').addEventListener('submit', function (eve
 
 /**  Ver a senha */
 
-const togglePasswordVisibility = () => {
-    const senhaField = document.getElementById('senha');
-    const vIcon = document.getElementById('icon')
-    if (senhaField.type === 'password') {
-        senhaField.type = 'text';
-        vIcon.classList.add('hide');
+
+/** <!-- Password field -->
+Password: <input type="password" value="FakePSW" id="myInput">
+
+<!-- An element to toggle between password visibility -->
+<input type="checkbox" onclick="myFunction()">Show Password */
+function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
     } else {
-        senhaField.type = 'password';
-        vIcon.classList.remove('hide');
+      x.type = "password";
     }
-}
+  }
 
 
 /** MODAL POP */
@@ -248,3 +251,5 @@ function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e){
     }  
     return false;  
 }
+
+/**    */
