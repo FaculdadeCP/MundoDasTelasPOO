@@ -60,7 +60,24 @@ def consultar_usuario(email, senha):
     finally:
         cur.close()
         conn.close()
-
+        
+def cadastrar_usuario(nome, sobrenome, cpf, rg, email, senha, funcionario_loja):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("""
+            INSERT INTO tb_pessoas (nome, sobrenome, cpf, rg,email, senha, funcionarioloja)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """, (nome, sobrenome, cpf, rg,email, senha, funcionario_loja))
+        conn.commit() 
+        return True
+    except psycopg2.Error as e:
+        print(f"Erro ao cadastrar usuário: {e}")
+        conn.rollback()
+        return False
+    finally:
+        cur.close()
+        conn.close()
 
 # ======================
 # Região: Produtos
