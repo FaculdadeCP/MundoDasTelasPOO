@@ -187,7 +187,7 @@ def consultar_funcionarios():
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
-        cur.execute("SELECT PS.nome, PS.sobrenome, PS.cpfcnpj, CG.cargo, FN.ativo FROM tb_funcionarios FN INNER JOIN tb_pessoas PS ON PS.id = FN.pessoa_id LEFT JOIN tb_cargos CG ON CG.id = FN.cargo_id ORDER BY FN.ativo DESC")
+        cur.execute("SELECT PS.id, PS.nome, PS.sobrenome, PS.cpfcnpj, CG.cargo, FN.ativo FROM tb_funcionarios FN INNER JOIN tb_pessoas PS ON PS.id = FN.pessoa_id LEFT JOIN tb_cargos CG ON CG.id = FN.cargo_id ORDER BY FN.ativo DESC")
         lstFuncionarios = cur.fetchall()
         return lstFuncionarios
     except Exception as e:
@@ -201,7 +201,10 @@ def consultar_funcionario(id):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
-        cur.execute("")
+        sql = """
+        SELECT PS.*, CG.cargo, enlst.residencial,enlst.comercial, EN.cep,EN.logradouro, EN.numero,EN.bairro, EN.complemento,EN.estado, EN.cidade, EN.telefone  FROM tb_pessoas PS inner join tb_funcionarios FN on FN.pessoa_id = PS.id left join tb_cargos cg  on CG.id = FN.cargo_id  inner join tb_enderecoslista enlst on enlst.pessoa_id = PS.id inner join tb_enderecos EN on EN.id = enlst.endereco_id WHERE PS.id = %s
+        """
+        cur.execute(sql,(id))
         lstFuncionarios = cur.fetchall()
         return lstFuncionarios
     except Exception as e:

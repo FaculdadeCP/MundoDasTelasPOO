@@ -6,6 +6,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th scope="col">codigo</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Sobrenome</th>
                 <th scope="col">CPF</th>
@@ -17,15 +18,14 @@
         <tbody>
             {% for funcionario in funcionarios %}
             <tr>
+                <td>{{ funcionario.id }}</td>
                 <td>{{ funcionario.nome }}</td>
                 <td>{{ funcionario.sobrenome }}</td>
                 <td>{{ funcionario.cpfcnpj }}</td>
                 <td>{{ funcionario.cargo }}</td>
                 <td>{{ funcionario.ativo }}</td>
                 <td>
-                    <div class="container-btn-atualizar">
-                        <button type="button" class="btn-atualizar">Editar</button>
-                    </div>
+                    <a href="{{ url_for('funcionario.funcionario_editar', id=funcionario.id) }}" class="btn btn-primary">Editar</a>
                 </td>
             </tr>
             {% endfor %}

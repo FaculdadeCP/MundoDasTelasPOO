@@ -1,10 +1,10 @@
-from database.data_access import consultar_funcionarios,cadastrar_usuario,consultar_Email,cadastro_endereco,atualizar_funcionario,Vincular_Usuario_Endereco,Vincular_usuario_cargo
+from database.data_access import consultar_funcionarios,consultar_funcionario,cadastrar_usuario,consultar_Email,cadastro_endereco,atualizar_funcionario,Vincular_Usuario_Endereco,Vincular_usuario_cargo
 class Funcionario:
     def CarregarFuncionarios():
         return  consultar_funcionarios()
     
     def CarregarFuncionario(id):
-        return consultar_funcionarios(id)
+        return consultar_funcionario(id)
     
     def Cadastrar_Funcionario(self, dados):
         temEmail = consultar_Email(dados['email'])

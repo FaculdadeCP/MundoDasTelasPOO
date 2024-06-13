@@ -67,5 +67,14 @@ def funcionario_cadastro():
          cargos = Cargo.CarregarCargos()
          return render_template('funcionario_cadastro.html', cargos=cargos)
 
-
+@funcionario_bp.route('/funcionario/editar/<int:id>',methods=['GET', 'POST'])
+def funcionario_editar(id):
     
+    if request.method == 'POST':
+        
+        pass
+    else:
+       funcionario = Funcionario.CarregarFuncionario(id)
+       print(f"Dados do funcionario: {funcionario}")
+       cargos = Cargo.CarregarCargos() 
+       return render_template('funcionario_atualizar.html', funcionario=funcionario, cargos=cargos)
