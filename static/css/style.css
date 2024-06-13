@@ -713,3 +713,161 @@ Tela de Consulta      */
  background: url(/static/Images/password_hide.png);
  background-size: cover;
 }
+
+
+/* --------------------------------------------------------------------------------------------------------------------
+
+CARRINHO ----------------------*/
+
+
+
+/* quebra os dois containers*/
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+/*Barra do lado direito*/
+.main-content {
+  width: 70%;
+}
+/*Barra do lado esquerdo*/
+.sidebar {
+  width: 25%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/*Cartão de cada produto*/
+.product, .service-details {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+/*Container geral da lista*/
+.products-services{
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+/* Detalhes do produto*/
+.product-details img, .service-details img {
+  height: 100px;
+  margin-right: 20px;
+}
+
+.product-info, .service-info {
+  flex-grow: 1;
+}
+
+/* Preço e botão de remover do item*/
+.product-actions, .service-actions {
+  text-align: right;
+}
+
+/* Preço do produto*/
+.product-actions .price-pix, .service-actions .price-pix {
+  font-size: 18px;
+  color: #f67c1a;
+  font-weight: bold;
+}
+
+/*Quantidade de produto de cada item*/
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+/*Botão de quantidade*/
+.quantity button {
+  border: none;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+}
+/* Botão de mais */
+#more{
+  background-color: #05a500;
+}
+/* Botão de menos */
+#lower{
+  background-color: #b30000;
+}
+
+/* text de quantidade */
+.quantity input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  margin: 0 5px;
+}
+/* Botoes de remover itens do carrinho */
+.remove-all, .remove {
+  color: red;
+  border: 2px solid red;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+/*Botão de remover todos os produtos*/
+.remove-all{
+  margin: 0px 5px 20px 0px;
+}
+
+/* Valores do lado esquerdo total*/
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+.price-pix {
+  color: #28a745;
+}
+
+/* tamanho dos botoes */
+.select-other, .payment, .continue {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Botão de selecionar outro endereço */
+.select-other {
+  background-color: #6c757d;
+  color: white;
+}
+/* Botão de ir para pagamento */
+.payment {
+  background-color: #f67c1a;
+  color: white;
+}
+/* Botão continue comprando */
+.continue {
+  background-color: #28a745;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
