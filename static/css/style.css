@@ -695,3 +695,21 @@ Tela de Consulta      */
 }
 
 
+#icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background-size: cover;
+  background-image: url(/static/Images/password_see.png);
+  max-width: 30px;
+  max-height: 30px;
+  min-width: 25px;
+  min-height: 25px;
+  cursor: pointer;
+}
+
+#icon.hide{
+ background: url(/static/Images/password_hide.png);
+ background-size: cover;
+}
