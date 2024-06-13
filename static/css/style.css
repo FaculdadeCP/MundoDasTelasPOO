@@ -383,9 +383,8 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: first baseline;
   padding: 15px;
-  background: #b8bad1;
 }
 
 /* inputs do login*/
@@ -394,7 +393,6 @@ button:hover {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -402,7 +400,9 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  padding: 50px 130px 33px 95px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: start;
 }
 
 /* Imagem do login*/
@@ -735,6 +735,7 @@ CARRINHO ----------------------*/
 .main-content {
   width: 70%;
 }
+
 /*Barra do lado esquerdo*/
 .sidebar {
   width: 25%;
@@ -861,8 +862,11 @@ CARRINHO ----------------------*/
   color: white;
 }
 
-
-
+/* -----------------------------------------------------------------------------------------------
+Entrada de Estoque*/
+.entrada-estoque-cartao{
+  width: 100%;
+}
 
 
 

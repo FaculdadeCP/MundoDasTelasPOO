@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+
+<div class="form-container">
+    <h2>Entrada de Estoque</h2>
+
+
+    <div class="container">
+        <div class="entrada-estoque-cartao">
+            <div class="products-services">
+                <h2>Produto</h2>
+                <div class="product">
+                    <img src="placa_video.png" alt="Placa de Vídeo">
+                    <div class="product-details">
+                        <div class="product-info">
+                            <p><strong>Samsung</strong></p>
+                            <p>Notebook Samsung Galaxy Book2 Intel Core i5-1235U, 8GB RAM, SSD 256GB, 15.6" Full HD,
+                                Windows 11 Home, Grafite</p>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity">
+                                <button id="lower" onclick="addEventListener()">-</button>
+                                <input type="text" value="1" id="quantity">
+                                <button id="more" onclick="addEventListener()">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container-btn-cadastrar">
+        <button type="submit" class="btn-cadastrar">Atualizar Estoque</button>
+    </div>
+
+
+
+
+
+    <script src="{{ url_for('static', filename='script/script.js') }}">
+
+        
+
+
+
+    </script>
+    {% endblock %}

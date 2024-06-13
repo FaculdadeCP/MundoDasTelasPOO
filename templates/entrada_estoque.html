@@ -1,0 +1,35 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Entrada de Estoque</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Tamanho</th>
+                <th scope="col">Tipo de Iluminação</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Lançar Entrada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="container-btn-atualizar">
+                        <button type="button" class="btn-atualizar">Lançar Entrada</button>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

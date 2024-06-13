@@ -11,7 +11,6 @@
     </div>
     <div class="product-details">
       <h3>{{ produto['marca'] }} {{ produto['modelo'] }}</h3>
-      <p class="old-price">R$ 1.200,00 <!-- Valor fictício, ajustar conforme necessário --></p>
       <p class="new-price">R$ {{ "{:,.2f}".format(produto['valor']) }}</p>
       <p class="payment-info">À vista no PIX</p>
       <div class="btComprar">
