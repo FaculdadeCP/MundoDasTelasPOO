@@ -151,10 +151,7 @@ document.getElementById('enderecoForm').addEventListener('submit', function (eve
 
 const togglePasswordVisibility = () => {
     const senhaField = document.getElementById('senha');
-    const passwordToggleIcon = document.querySelector('.toggle-password i');
-    const vIcon = document.getElementById('icon');
-
-    vIcon.classList.remove('Hide');
+    const vIcon = document.getElementById('icon')
     if (senhaField.type === 'password') {
         senhaField.type = 'text';
         vIcon.classList.add('hide');
