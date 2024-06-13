@@ -71,7 +71,26 @@ def funcionario_cadastro():
 def funcionario_editar(id):
     
     if request.method == 'POST':
-        
+        nome = request.form['nome']
+        sobrenome = request.form['sobrenome']
+        cpf = request.form['cpf']
+        rg = request.form['rg']
+        email = request.form['email']
+        senha = request.form['senha']
+        funcionario_loja = True  
+        cep = request.form['cep']
+        logradouro = request.form['logradouro']
+        numero = request.form['EnderecoNumero']
+        bairro = request.form['bairro']
+        complemento = request.form['complemento']
+        estado = request.form['estado']
+        cidade = request.form['cidade']
+        telefone = request.form['telefone']
+        cargo_id = int(request.form.get('cargo_id', 0))
+        funcionarioAtivo = request.form['funcionarioAtivo']
+        tipo_endereco = request.form['tipo_endereco']
+        is_comercial = tipo_endereco == 'comercial'  # True se comercial, False caso contrário
+        is_residencial = tipo_endereco == 'residencial'  # True se residencial, False caso contrário
         pass
     else:
        funcionario = Funcionario.CarregarFuncionario(id)

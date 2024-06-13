@@ -119,6 +119,26 @@ def Vincular_usuario_cargo(usuarioId,cargo,ativo):
         cur.close()
         conn.close()
         
+def Atualizar_cadastro_usuario(nome,sobrenome,cpfcnpj,rg,email,senha,funcionarioloja,id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        sql = """
+        UPDATE tb_pessoas 
+        SET set nome = %s, sobrenome = %s, cpfcnpj = %s, rg = %s, email = %s, senha = %s, funcionarioloja = %s 
+        WHERE id = %s
+        """
+        cur.execute(sql, (nome, sobrenome, cpfcnpj, rg, email, senha, funcionarioloja))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao cadastrar produto: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+
 # ======================
 # Região: Produtos 
 # ======================
@@ -179,6 +199,7 @@ def consultar_produto_card(id):
         cur.close()
         conn.close()
         
+
 # ======================
 # Região: Funcionarios
 # ======================
