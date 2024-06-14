@@ -1,9 +1,10 @@
-from database.data_access import cadastro_produto
+from database.data_access import cadastro_produto, consultar_produto_card
+
 
 class Produto:
-    def consultar_produto(self):
-        # Lógica para consultar produtos
-        pass
+    def consultar_produto(id):
+        return consultar_produto_card(id)
+        
 
     def cadastrar_produto(self, dados):
         # Extrai os dados do dicionário e chama a função de cadastro

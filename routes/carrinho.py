@@ -1,9 +1,31 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, flash
-from routes.home import home_route
+from flask import Blueprint, render_template, request, session,redirect,url_for
+from classes.cls_produto import Produto
 
-carrinho_bp = Blueprint('carrinho', __name__) #rota para importar no main
+carrinho_bp = Blueprint('carrinho', __name__)
 
-@carrinho_bp.route('/carrinho') #rota do site
-def carrinho(): 
-    "carrinho" #Aparece como nome da pagina
-    return render_template('carrinho.html') #pagina que vai redirecionar
+def adicionar_ao_carrinho(produto_id, quantidade):
+    if 'carrinho' not in session:
+        session['carrinho'] = {}
+    
+    if produto_id in session['carrinho']:
+        session['carrinho'][produto_id] += quantidade  # Incrementa a quantidade
+    else:
+        session['carrinho'][produto_id] = quantidade  # Adiciona novo produto com sua quantidade
+    
+    session.modified = True  # Garante que a sessão foi modificada
+
+
+@carrinho_bp.route('/carrinho', methods=['GET'])
+def carrinho():
+    produtos_carrinho = []
+    if 'carrinho' in session:
+        for produto_id, quantidade in session['carrinho'].items():
+            produto = Produto.consultar_produto(produto_id)
+            if produto:
+                produto_info = {
+                    'detalhes': produto,
+                    'quantidade': quantidade
+                }
+                produtos_carrinho.append(produto_info)
+    
+    return render_template('carrinho.html', produtos=produtos_carrinho)
