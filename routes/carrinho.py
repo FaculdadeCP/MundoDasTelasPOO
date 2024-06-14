@@ -29,3 +29,6 @@ def carrinho():
                 produtos_carrinho.append(produto_info)
     
     return render_template('carrinho.html', produtos=produtos_carrinho)
+@carrinho_bp.route('/carrinho/formaPagmaento',methods=['GET'])
+def forma_pagamento():
+    return render_template('carrinho_forma_pagamento.html') # Página que vai redirecionar

@@ -13,11 +13,13 @@
       <h3>{{ produto['marca'] }} {{ produto['modelo'] }}</h3>
       <p class="new-price">R$ {{ "{:,.2f}".format(produto['valor']) }}</p>
       <div class="btComprar" data-product-id="{{ produto['id'] }}" onclick="addProductToCart(this.getAttribute('data-product-id'))">
+        <a href="{{ url_for('carrinho.carrinho') }}">
         <span>
           <img src="{{ url_for('static', filename='images/WhiteisMan.svg') }}" alt="logo_carrinho" class="logo_carrinho">
           <strong>COMPRAR</strong>
         </span>
       </div>
+    </a>
     </div>
   </div>
   {% endfor %}

@@ -51,7 +51,9 @@
             <div class="divider"></div>
             <!-- Buttons -->
             <div class="buttons">
-                <button class="payment">Ir Para o Pagamento</button>
+                <a href="{{ url_for('carrinho.forma_pagamento') }}">
+                <button class="payment">Ir Para o Pagamento</button></a>
+
                 <button class="continue">Continuar Comprando</button>
             </div>
         </div>
