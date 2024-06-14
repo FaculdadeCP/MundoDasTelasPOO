@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="form-container">
-    <h2>Entrada de Estoque</h2>
+    <h2>Consulta de Estoque</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -11,24 +11,25 @@
                 <th scope="col">Tamanho</th>
                 <th scope="col">Tipo de Iluminação</th>
                 <th scope="col">Valor</th>
+                <th scope="col">Quantidade</th>
                 <th scope="col">Lançar Entrada</th>
             </tr>
         </thead>
         <tbody>
-            {% for funcionario in funcionarios %}
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <tr>
+                <td>LG</td>
+                <td>PS2</td>
+                <td>14"</td>
+                <td>LED</td>
+                <td>R$ 900,00</td>
+                <td>20</td>
                 <td>
                     <div class="container-btn-atualizar">
-                        <button type="button" class="btn-atualizar">Lançar Entrada</button>
+                       <a href="{{ url_for('produto.cadastro_estoque') }}">
+                        <button type="button" class="btn-atualizar">Lançar Entrada</button></a>
                     </div>
                 </td>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
 </div>

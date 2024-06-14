@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, render_template, request, redirect, url_for
-from classes.cls_Produto import Produto
+from classes.cls_produto import Produto
 from static.s3_config import upload_to_s3
 
 produto_bp = Blueprint('produto', __name__)
@@ -59,3 +59,15 @@ def produtos_cadastro():
             return "Erro ao cadastrar produto", 500
     
     return render_template('produtos_cadastro.html')
+
+@produto_bp.route('/produtos/consulta')
+def produtos_consulta():
+    return render_template('produto_consulta.html')
+
+@produto_bp.route('estoque/consulta')
+def consulta_estoque():
+    return render_template('entrada_estoque.html')
+
+@produto_bp.route('estoque/cadastro')
+def cadastro_estoque():
+    return render_template('entrada_estoque_atualizar.html')

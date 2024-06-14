@@ -30,9 +30,9 @@
 
                 <!-- Navbar links and search form -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto">cadastro_estoque
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Entrada de Estoque</a>
+                            <a class="nav-link" href="{{ url_for('produto.consulta_estoque') }}">Entrada de Estoque</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPricing" role="button"
@@ -42,7 +42,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
                                 <a class="dropdown-item" href="{{ url_for('produto.produtos_cadastro') }}">Novo Produto</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Consulta</a>
+                                <a class="dropdown-item" href="{{ url_for('produto.produtos_consulta') }}">Consulta</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -53,7 +53,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
                                 <a class="dropdown-item" href="{{ url_for('fornecedor.fornecedor_cadastro') }}">Novo Fornecedor</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Consulta</a>
+                                <a class="dropdown-item" href="{{ url_for('fornecedor.fornecedor_consulta') }}">Consulta</a>
                             </div>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPricing" role="button"

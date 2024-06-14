@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
-from classes.cls_Funcionario import  Funcionario
+from classes.cls_funcionario import  Funcionario
 from classes.cls_cargos import Cargo
 
 

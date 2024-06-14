@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 
 
 
@@ -14,17 +14,23 @@
             <div class="products-services">
                 <h2>Produto</h2>
                 <div class="product">
-                    <img src="placa_video.png" alt="Placa de Vídeo">
+                    <div class="product-image">
+                        <img src="https://mundodastelas.s3.us-east-2.amazonaws.com/Monitor_LG_34Pol_Gamer_Curvo.jpg">
+                    </div>
+                    
                     <div class="product-details">
                         <div class="product-info">
-                            <p><strong>Samsung</strong></p>
-                            <p>Notebook Samsung Galaxy Book2 Intel Core i5-1235U, 8GB RAM, SSD 256GB, 15.6" Full HD,
-                                Windows 11 Home, Grafite</p>
+                            <p><strong>LG</strong></p>
+                            <p>Marca: LG
+                                Modelo: PS2
+                                Tamanho: 14"
+                                Tipo de Iluminação: LED
+                                Valor: R$ 900,00</p>
                         </div>
                         <div class="product-actions">
                             <div class="quantity">
                                 <button id="lower" onclick="addEventListener()">-</button>
-                                <input type="text" value="1" id="quantity">
+                                <input type="text" value="20" id="quantity">
                                 <button id="more" onclick="addEventListener()">+</button>
                             </div>
                         </div>
