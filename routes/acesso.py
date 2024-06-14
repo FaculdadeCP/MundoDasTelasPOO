@@ -17,6 +17,11 @@ def login():
         if usuario:
             session['user_id'] = usuario['id']
             session['user_email'] = usuario['email']
+            session['user_nome'] = usuario['nome']
+            session['user_sobrenome'] = usuario['sobrenome']
+            session['user_cpfcnpj'] = usuario['cpfcnpj']
+            session['user_rg'] = usuario['rg']
+            session['user_senha'] = usuario['senha']
             session['logged_in'] = True
             session['funcionarioloja'] = usuario['funcionarioloja']
             if usuario['funcionarioloja']:
