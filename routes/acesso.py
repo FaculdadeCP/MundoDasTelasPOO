@@ -15,7 +15,9 @@ def login():
         password = request.form['password']
         usuario = consultar_usuario(email=email, senha=password)
         if usuario:
+            #dados do usuário:
             session['user_id'] = usuario['id']
+            print(f"usuario: {usuario['id']}")
             session['user_email'] = usuario['email']
             session['user_nome'] = usuario['nome']
             session['user_sobrenome'] = usuario['sobrenome']
@@ -24,6 +26,20 @@ def login():
             session['user_senha'] = usuario['senha']
             session['logged_in'] = True
             session['funcionarioloja'] = usuario['funcionarioloja']
+            #Dados de endereço:
+            session['user_cep'] = usuario['cep']
+            session['user_logradouro'] = usuario['logradouro']
+            session['user_bairro'] = usuario['bairro']
+            session['user_complemento'] = usuario['complemento']
+            session['user_estado'] = usuario['estado']
+            session['user_cidade'] = usuario['cidade']
+            session['user_telefone'] = usuario['telefone']
+            session['user_numero'] = usuario['numero']
+            session['user_residencial'] = usuario['residencial']
+            session['user_comercial'] = usuario['comercial']
+            # Inicializando o carrinho de compras como um dicionário vazio
+            session['user_carrinho'] = {}
+            
             if usuario['funcionarioloja']:
                 return redirect(url_for('base_admin.base_admin'))  # Redireciona para a tela do administrador
             else:

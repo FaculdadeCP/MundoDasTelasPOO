@@ -34,7 +34,7 @@ def consultar_usuario(email, senha):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
-        cur.execute("SELECT * FROM tb_pessoas WHERE email = %s AND senha = %s", (email, senha))
+        cur.execute("SELECT PS.*, EN.cep,EN.logradouro,EN.bairro,EN.complemento, EN.estado, EN.cidade, EN.telefone,EN.numero, EL.residencial, EL.comercial FROM tb_pessoas PS LEFT JOIN tb_enderecoslista EL ON EL.pessoa_id = PS.id  INNER JOIN tb_enderecos EN  ON EN.id = EL.endereco_id WHERE email = %s AND senha = %s", (email, senha))
         usuario = cur.fetchone()
         return usuario
     except Exception as e:
@@ -290,3 +290,87 @@ def consultar_Cargos():
     finally:
         cur.close()
         conn.close()
+        
+# ======================
+# Região: Carrinho
+# ======================
+def consultar_carrinho(usuario):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        sql = """
+        SELECT * FROM tb_carrinho 
+        WHERE pessoa_id = %s
+        """
+        cur.execute(sql,(usuario))
+        lstProdutosCarrinho = cur.fetchall()
+        print(lstProdutosCarrinho)  # Veja o que está sendo retornado
+        return lstProdutosCarrinho
+    except Exception as e:
+        print(f"Erro ao carregar o carrinho: {e}")
+        return None
+    finally:
+        cur.close()
+        conn.close()
+        
+def consultar_produto_carrinho(usuario, produto):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        sql = """
+        SELECT * FROM tb_carrinho
+        WHERE pessoa_id = %s AND produto_id = %s
+        """
+        cur.execute(sql, (usuario, produto))
+        produtos_carrinho = cur.fetchall()  # Busca todos os registros que correspondem à consulta
+
+        if produtos_carrinho:
+            print(produtos_carrinho)  # Imprime os produtos encontrados no carrinho
+            return 1  # Retorna 1 se encontrou algum registro
+        else:
+            return 2  # Retorna 2 se não encontrou registros
+
+    except Exception as e:
+        print(f"Erro ao carregar o carrinho: {e}")
+        return 3  # Retorna 3 em caso de erro na consulta
+    finally:
+        cur.close()
+        conn.close()
+
+def inserir_produto_carrinho(usuario, produto, quantidade):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        sql = """
+        INSERT INTO tb_carrinho (pessoa_id,produto_id,quantidade)
+        VALUES (%s, %s, %s)
+        """
+        cur.execute(sql, (usuario,produto,quantidade))
+        conn.commit()
+        print(f"Inseriu o produto no carrinho com sucesso!")
+    except Exception as e:
+        print(f"Erro ao Inserir o produto no carrinho: {e}")
+    finally:
+        cur.close()
+        conn.close()
+
+def Atualizar_produto_carrinho(usuario,produto,quantidade):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        sql = """
+        UPDATE tb_carrinho 
+        SET quantidade = %s
+        WHERE pessoa_id = %s AND produto_id = %s
+        """
+        cur.execute(sql, (quantidade,usuario,produto))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao atualizar produto no carrinho!: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+

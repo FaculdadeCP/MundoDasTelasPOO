@@ -12,14 +12,16 @@
     <div class="product-details">
       <h3>{{ produto['marca'] }} {{ produto['modelo'] }}</h3>
       <p class="new-price">R$ {{ "{:,.2f}".format(produto['valor']) }}</p>
-      <div class="btComprar" data-product-id="{{ produto['id'] }}" onclick="addProductToCart(this.getAttribute('data-product-id'))">
-        <a href="{{ url_for('carrinho.carrinho') }}">
-        <span>
-          <img src="{{ url_for('static', filename='images/WhiteisMan.svg') }}" alt="logo_carrinho" class="logo_carrinho">
-          <strong>COMPRAR</strong>
-        </span>
-      </div>
-    </a>
+      <form action="{{ url_for('carrinho.adicionar') }}" method="post">
+        <input type="hidden" name="product_id" value="{{ produto['id'] }}">
+        <input type="hidden" name="quantity" value="1"> <!-- Aqui, você pode permitir que o usuário altere a quantidade se necessário -->
+        <button type="submit" class="btComprar">
+            <span>
+                <img src="{{ url_for('static', filename='images/WhiteisMan.svg') }}" alt="logo_carrinho" class="logo_carrinho">
+                <strong>COMPRAR</strong>
+            </span>
+        </button>
+    </form>
     </div>
   </div>
   {% endfor %}

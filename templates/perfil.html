@@ -45,46 +45,44 @@
 
         <div class="form-group-half">
             <div class="form-group">
-                <input type="text" id="cep" name="cep" maxlength="9" required placeholder=" "
-                    onkeyup="handleCEP(event)">
+                <input type="text" id="cep" name="cep" maxlength="9" required placeholder=" " onkeyup="handleCEP(event)" value="{{ session.user_cep }}">
                 <label for="cep">CEP</label>
             </div>
             <div class="form-group">
-                <input type="text" id="logradouro" name="logradouro" maxlength="250" required placeholder=" ">
+                <input type="text" id="logradouro" name="logradouro" maxlength="250" required placeholder=" " value="{{ session.user_logradouro }}" >
                 <label for="logradouro">Logradouro</label>
             </div>
         </div>
 
         <div class="form-group-half">
             <div class="form-group">
-                <input type="number" id="numero" name="numero" required placeholder=" ">
+                <input type="number" id="numero" name="numero" required placeholder=" " value="{{ session.user_numero }}">
                 <label for="numero">Número</label>
             </div>
             <div class="form-group">
-                <input type="text" id="bairro" name="bairro" maxlength="250" required placeholder=" ">
+                <input type="text" id="bairro" name="bairro" maxlength="250" required placeholder=" " value="{{ session.user_bairro }}">
                 <label for="bairro">Bairro</label>
             </div>
         </div>
 
         <div class="form-group-half">
             <div class="form-group">
-                <input type="text" id="complemento" name="complemento" maxlength="250" placeholder=" ">
+                <input type="text" id="complemento" name="complemento" maxlength="250" placeholder=" " value="{{ session.user_complemento }}">
                 <label for="complemento">Complemento</label>
             </div>
             <div class="form-group">
-                <input type="text" id="estado" name="estado" maxlength="2" required placeholder=" ">
+                <input type="text" id="estado" name="estado" maxlength="2" required placeholder=" " value="{{ session.user_estado }}">
                 <label for="estado">Estado</label>
             </div>
         </div>
 
         <div class="form-group-half">
             <div class="form-group">
-                <input type="text" id="cidade" name="cidade" maxlength="250" required placeholder=" ">
+                <input type="text" id="cidade" name="cidade" maxlength="250" required placeholder=" " value="{{ session.user_cidade }}">
                 <label for="cidade">Cidade</label>
             </div>
             <div class="form-group">
-                <input type="text" id="telefone" name="telefone" maxlength="15" required placeholder=" "
-                    onkeyup="handlePhone(event)">
+                <input type="text" id="telefone" name="telefone" maxlength="15" required placeholder=" " onkeyup="handlePhone(event)" value="{{ session.user_telefone }}">
                 <label for="telefone">Telefone</label>
             </div>
         </div>

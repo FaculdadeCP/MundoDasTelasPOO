@@ -47,10 +47,11 @@
                             placeholder="Buscar por produtos, marcas e muito mais..." aria-label="Search" size="40%">
                         <button class="btn btn-outline" type="submit">Buscar</button>
                     </form>
-                    <a href="{{ url_for('carrinho.carrinho') }}">
+                    <a href="{{ url_for('carrinho.visualizar') }}">
                         <img src="{{ url_for('static', filename='images/RelampagoCarlinhos.svg') }}" alt="Logo"
                             class="img-carrinho-index">
                     </a>
+                    
                     <!-- Meu Perfil -->
                     {% if session.logged_in %}
                     <a href="{{ url_for('perfil.perfil') }}">
