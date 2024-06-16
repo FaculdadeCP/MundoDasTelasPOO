@@ -13,13 +13,15 @@ def adicionar():
         quantidade = request.form.get('quantity', type=int, default=1)
         result = carrinho.AdicionarProduto(user_id, product_id, quantidade)
         if result == "Ocorreu um erro!":
-            flash("Erro ao adicionar produto ao carrinho", "error")  # Use flash para enviar mensagens de erro ou sucesso.
-            return redirect(url_for('home.home'))
-        return redirect(url_for('home.home'))  # Redireciona para a página do carrinho após adicionar
+            return redirect(url_for('home.home',message="Ocorreu um erro ao tentar adicionar o produto!, tente novamente mais tarde"))
+        return redirect(url_for('carrinho.visualizar'))  # Redireciona para a página do carrinho após adicionar
     else:
-        flash("Usuário não identificado", "error")
-        return redirect(url_for('acesso.login'))  # Supondo que você tenha uma rota de login
+        message = "Usuário não identificado, por gentileza faça o Login!"
+        return render_template('login.html',message=message)
 
-@carrinho_bp.route('/carrinho',methods=['GET'])
+@carrinho_bp.route('/visualizar',methods=['POST','GET'])
 def visualizar():
-    return render_template('carrinho.html')
+     if request.method == 'POST':
+         return render_template('carrinho.html')
+     else: 
+         return render_template('carrinho.html')

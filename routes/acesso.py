@@ -37,16 +37,13 @@ def login():
             session['user_numero'] = usuario['numero']
             session['user_residencial'] = usuario['residencial']
             session['user_comercial'] = usuario['comercial']
-            # Inicializando o carrinho de compras como um dicionário vazio
-            session['user_carrinho'] = {}
-            
             if usuario['funcionarioloja']:
                 return redirect(url_for('base_admin.base_admin'))  # Redireciona para a tela do administrador
             else:
                 return redirect(url_for('home.home'))  # Redireciona para a tela padrão
         else:
             error_message = 'Usuário ou senha incorretos!'
-            return render_template('login.html', error_message=error_message)
+            return render_template('login.html', message=error_message)
     return render_template('login.html', error_message=error_message)
 
 @acesso.route('/logout')

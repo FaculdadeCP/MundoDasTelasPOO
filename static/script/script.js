@@ -254,3 +254,4 @@ function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e){
     }  
     return false;  
 }
+
