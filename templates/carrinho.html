@@ -44,37 +44,32 @@
                     </div>
                 </div>
                 {% endfor %}
-                
-
-
         </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Resumo -->
-        <div class="summary">
-            <h2>RESUMO</h2>
-            <p>Valor dos Produtos: <span>R$ 00,00</span></p>
-            <p>Frete: <span>R$ 00,00</span></p>
-            <p>Valor Total: <span class="price-pix">R$ 00,00</span></p>
-        </div>
-        <div class="divider"></div>
-        <!-- Entrega -->
-        <div class="delivery">
-            <h2>ENTREGA</h2>
-            <p>.</p>
-        </div>
-
-        <div class="divider"></div>
-        <!-- Buttons -->
-        <div class="buttons">
-
-            <button class="payment">Ir Para o Pagamento</button></a>
-
-            <button class="continue">Continuar Comprando</button>
-        </div>
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- Resumo -->
+    <div class="summary">
+        <h2>RESUMO</h2>
+        <p>Valor dos Produtos: <span>R$ {{ total | currency_format }}</span></p>
+        <p>Frete: <span>R$ 00,00</span></p>
+        <p>Valor Total: <span class="price-pix">R$ {{ total | currency_format }}</span></p>
     </div>
+    <div class="divider"></div>
+    <!-- Entrega -->
+    <div class="delivery">
+        <h2>ENTREGA</h2>
+        <p>.</p>
+    </div>
+
+    <div class="divider"></div>
+    <!-- Buttons -->
+    <div class="buttons">
+        <button class="payment">Ir Para o Pagamento</button>
+        <button class="continue">Continuar Comprando</button>
+    </div>
+</div>
+
 </div>
 
 

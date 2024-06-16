@@ -23,13 +23,14 @@ def adicionar():
 def visualizar():
     if 'user_id' in session:
         user_id = session['user_id']
-        produtos_carrinho = carrinho.CarregarCarrinho(user_id)
-        
-        return render_template('carrinho.html', message="",produtos=produtos_carrinho)
-    else:
-        menssagem = "Por favor, faça o login para ver seu carrinho.", "info"
-        return render_template('acesso.login',message=menssagem)
+        produtos = carrinho.CarregarCarrinho(user_id)
+        total = carrinho.AtualizarValorCarrinho(user_id)  # Esta chamada já retorna o valor como float ou 0
 
+        return render_template('carrinho.html', produtos=produtos, total=total)
+    else:
+        flash('Por favor, faça login para acessar o carrinho.', 'error')
+        return redirect(url_for('login'))
+    
 @carrinho_bp.route('/limpar', methods=['POST'])
 def limpar():
     if 'user_id' in session:
@@ -62,6 +63,7 @@ def atualizar_quantidade():
         # Verifica se a quantidade atualizada é zero e remove o produto
         if new_quantity <= 0:
             carrinho.removerProduto(user_id, product_id)
+            
             flash('Produto removido com sucesso!', 'success')
         else:
             # Função que atualiza a quantidade no banco de dados

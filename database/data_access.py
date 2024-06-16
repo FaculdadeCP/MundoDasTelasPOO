@@ -350,6 +350,21 @@ def consultar_produto_carrinho(usuario, produto):
         cur.close()
         conn.close()
 
+def consultar_valor_carrinho(usuario):
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    try:
+        cur.execute("SELECT SUM(PD.valor * CR.quantidade) AS total FROM tb_carrinho CR INNER JOIN tb_produtos PD ON PD.id = CR.produto_id WHERE pessoa_id = %s", (usuario,))
+        total_row = cur.fetchone()
+        total = total_row['total'] if total_row and total_row['total'] is not None else 0
+        return float(total)  # Converte de Decimal para float, se necessário
+    except Exception as e:
+        print(f"Erro ao carregar o caixa: {e}")
+        return 0  # Retorna 0 se ocorrer algum erro
+    finally:
+        cur.close()
+        conn.close()
+
 def inserir_produto_carrinho(usuario, produto, quantidade):
     conn = get_db_connection()
     cur = conn.cursor()
@@ -397,6 +412,25 @@ def remover_todos_produtos_carrinho(usuario):
         WHERE pessoa_id = %s
         """
         cur.execute(sql, (usuario,))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao LIMPAR produto no carrinho!: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()
+
+def remover_produto_carrinho(usuario,produto):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        sql = """
+        DELETE FROM tb_carrinho 
+        WHERE pessoa_id = %s AND produto_id = %s
+        """
+        cur.execute(sql, (usuario,produto))
         conn.commit()
         return True
     except Exception as e:
