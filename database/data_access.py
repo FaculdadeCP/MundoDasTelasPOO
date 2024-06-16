@@ -299,13 +299,25 @@ def consultar_carrinho(usuario):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
         sql = """
-        SELECT * FROM tb_carrinho 
+        select pd.modelo, pd.marca, pd.descricao, pd.caminhoimagem, pd.valor, cr.quantidade from tb_carrinho CR inner join tb_produtos pd on PD.id = CR.produto_id
         WHERE pessoa_id = %s
         """
-        cur.execute(sql,(usuario))
-        lstProdutosCarrinho = cur.fetchall()
-        print(lstProdutosCarrinho)  # Veja o que está sendo retornado
-        return lstProdutosCarrinho
+        cur.execute(sql,(usuario,))
+        produtosCarrinhoData = cur.fetchall()
+        produtos = []
+        for produtosCarrinhoData in produtosCarrinhoData:
+            produto = {
+                    'modelo': produtosCarrinhoData['modelo'],
+                    'marca': produtosCarrinhoData['marca'],
+                    'descricao': produtosCarrinhoData['descricao'],
+                    'quantidade': produtosCarrinhoData['quantidade'],
+                    'valor': produtosCarrinhoData['valor'],
+                    'caminho_imagem': produtosCarrinhoData['caminhoimagem']
+                }
+            produtos.append(produto)
+        return produtos
+      
+    
     except Exception as e:
         print(f"Erro ao carregar o carrinho: {e}")
         return None
@@ -374,3 +386,21 @@ def Atualizar_produto_carrinho(usuario,produto,quantidade):
         cur.close()
         conn.close()
 
+def remover_todos_produtos_carrinho(usuario):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    try:
+        
+        sql = """
+        DELETE FROM tb_carrinho 
+        WHERE pessoa_id = %s
+        """
+        cur.execute(sql, (usuario,))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Erro ao LIMPAR produto no carrinho!: {e}")
+        return False
+    finally:
+        cur.close()
+        conn.close()

@@ -19,6 +19,11 @@ app.secret_key = 'm0nd0d4st3l4s'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://xelfcdut:2DHCHniJlOswtUcXjf0CuPlkZJUy3Zri@kesavan.db.elephantsql.com/xelfcdut'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+@app.template_filter('currency_format')
+def currency_format(value):
+    return f"{value:,.2f}"
+
+
 db.init_app(app)
 
 app.register_blueprint(home_route)

@@ -35,7 +35,6 @@ def home():
                 'monitor': produto_data['monitor']
             }
             produtos.append(produto)
-            print(f"{produto}")
         return render_template('index.html', produtos=produtos)
     except Exception as e:
         print(f"Erro ao consultar produtos: {e}")

@@ -21,7 +21,24 @@ def adicionar():
 
 @carrinho_bp.route('/visualizar',methods=['POST','GET'])
 def visualizar():
-     if request.method == 'POST':
-         return render_template('carrinho.html')
-     else: 
-         return render_template('carrinho.html')
+    if 'user_id' in session:
+        user_id = session['user_id']
+        produtos_carrinho = carrinho.CarregarCarrinho(user_id)
+        
+        return render_template('carrinho.html', message="",produtos=produtos_carrinho)
+    else:
+        menssagem = "Por favor, faça o login para ver seu carrinho.", "info"
+        return render_template('acesso.login',message=menssagem)
+
+@carrinho_bp.route('/limpar', methods=['POST'])
+def limpar():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        resultado = carrinho.LimparCarrinho(user_id)
+        if resultado:
+            flash('Todos os produtos foram removidos do carrinho.', 'success')
+        else:
+            flash('Não foi possível limpar o carrinho.', 'error')
+    else:
+        flash('Você precisa estar logado para realizar esta ação.', 'error')
+    return redirect(url_for('carrinho.visualizar'))

@@ -7,68 +7,79 @@
 
 <div class="form-container">
     <h2>Carrinho</h2>
-
-
     <!-- Main Content -->
     <div class="container">
         <div class="main-content">
             <!-- Produtos e Serviços -->
             <div class="products-services">
                 <h2>Produtos no Carrinho</h2>
-                <button class="remove-all">REMOVER TODOS OS PRODUTOS</button>
+                <form action="{{ url_for('carrinho.limpar') }}" method="post">
+                    <button type="submit" class="remove-all">REMOVER TODOS OS PRODUTOS</button>
+                </form>
 
                 {% for produto in produtos %}
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ produto.detalhes['caminho_imagem'] }}" alt="{{ produto.detalhes['descricao'] }}">
+                <div class="product">
+                    <div class="product-image-estoque">
+                        <img src="{{ produto['caminho_imagem'] }}" alt="{{ produto['descricao'] }}">
                     </div>
                     <div class="product-details">
-                        <h3>{{ produto.detalhes['marca'] }} {{ produto.detalhes['modelo'] }}</h3>
-                        <p class="new-price">R$ {{ "{:,.2f}".format(produto.detalhes['valor']) }}</p>
-                        <!-- Adicione um controle para ajustar a quantidade ou remover o produto -->
+                        <div class="product-info">
+                            <p><strong>{{ produto['modelo'] }}</strong></p>
+                            <p>Marca: {{ produto['marca'] }}</p>
+                            <p>Modelo: {{ produto['modelo'] }}</p>
+                            <p>Tamanho: "{{ produto['tamanho'] | default('N/A') }}"</p>
+                            <p>Tipo de Iluminação: {{ produto['tipo_iluminacao'] | default('N/A') }}</p>
+                            <p>Valor: R$ {{ produto['valor'] | currency_format }}</p>
+                        </div>
+                        <div class="product-actions">
+                            <!-- Botões ou ações podem ser adicionados aqui -->
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
-        </div>
+                
 
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Resumo -->
-            <div class="summary">
-                <h2>RESUMO</h2>
-                <p>Valor dos Produtos: <span>R$ 00,00</span></p>
-                <p>Frete: <span>R$ 00,00</span></p>
-                <p>Valor Total: <span class="price-pix">R$ 00,00</span></p>
-            </div>
-            <div class="divider"></div>
-            <!-- Entrega -->
-            <div class="delivery">
-                <h2>ENTREGA</h2>
-                <p>.</p>
-            </div>
 
-            <div class="divider"></div>
-            <!-- Buttons -->
-            <div class="buttons">
-               
-                <button class="payment">Ir Para o Pagamento</button></a>
-
-                <button class="continue">Continuar Comprando</button>
-            </div>
         </div>
     </div>
 
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Resumo -->
+        <div class="summary">
+            <h2>RESUMO</h2>
+            <p>Valor dos Produtos: <span>R$ 00,00</span></p>
+            <p>Frete: <span>R$ 00,00</span></p>
+            <p>Valor Total: <span class="price-pix">R$ 00,00</span></p>
+        </div>
+        <div class="divider"></div>
+        <!-- Entrega -->
+        <div class="delivery">
+            <h2>ENTREGA</h2>
+            <p>.</p>
+        </div>
+
+        <div class="divider"></div>
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <button class="payment">Ir Para o Pagamento</button></a>
+
+            <button class="continue">Continuar Comprando</button>
+        </div>
+    </div>
+</div>
 
 
 
 
 
-    <script src="{{ url_for('static', filename='script/script.js') }}">
+
+<script src="{{ url_for('static', filename='script/script.js') }}">
 
 
 
 
 
-    </script>
-    {% endblock %}
+</script>
+{% endblock %}
