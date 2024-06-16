@@ -299,7 +299,7 @@ def consultar_carrinho(usuario):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     try:
         sql = """
-        select pd.modelo, pd.marca, pd.descricao, pd.caminhoimagem, pd.valor, cr.quantidade from tb_carrinho CR inner join tb_produtos pd on PD.id = CR.produto_id
+        select pd.id, pd.modelo, pd.marca, pd.descricao, pd.caminhoimagem, pd.valor, cr.quantidade from tb_carrinho CR inner join tb_produtos pd on PD.id = CR.produto_id
         WHERE pessoa_id = %s
         """
         cur.execute(sql,(usuario,))
@@ -307,6 +307,7 @@ def consultar_carrinho(usuario):
         produtos = []
         for produtosCarrinhoData in produtosCarrinhoData:
             produto = {
+                    'id': produtosCarrinhoData['id'],
                     'modelo': produtosCarrinhoData['modelo'],
                     'marca': produtosCarrinhoData['marca'],
                     'descricao': produtosCarrinhoData['descricao'],

@@ -24,3 +24,6 @@ class carrinho:
         except Exception as e:
             print(f"Erro ao limpar o carrinho: {e}")
             return None
+        
+    def AtualizarProduto(usuario,produto,quantidade):
+        return Atualizar_produto_carrinho(usuario,produto,quantidade)

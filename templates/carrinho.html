@@ -30,6 +30,13 @@
                             <p>Tamanho: "{{ produto['tamanho'] | default('N/A') }}"</p>
                             <p>Tipo de Iluminação: {{ produto['tipo_iluminacao'] | default('N/A') }}</p>
                             <p>Valor: R$ {{ produto['valor'] | currency_format }}</p>
+                            <form action="{{ url_for('carrinho.atualizar_quantidade') }}" method="post">
+                                <input type="hidden" name="product_id" value="{{ produto['id'] }}">
+                                <button type="submit" name="change_type" value="decrement">-</button>
+                                <input type="text" name="quantity" readonly value="{{ produto['quantidade'] }}" size="3">
+                                <button type="submit" name="change_type" value="increment">+</button>
+                            </form>
+                            
                         </div>
                         <div class="product-actions">
                             <!-- Botões ou ações podem ser adicionados aqui -->
