@@ -210,6 +210,12 @@ CARD*/
   border-radius: 8px;
 }
 
+.product-image-estoque img {
+  width: 30%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .product-details {
   padding: 15px;
 }

@@ -66,6 +66,16 @@
         </div>
         <div class="form-group-half">
             <div class="form-group">
+                <input type="number" step="0.01" id="valor" name="valor" required placeholder=" " onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+                <label for="valor">Valor</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="fornecedor" name="fornecedor" placeholder=" ">
+                <label for="fornecedor">Fornecedor</label>
+            </div>
+        </div>
+        <div class="form-group-half">
+            <div class="form-group">
                 <textarea id="descricao" name="descricao" rows="4" placeholder=" "></textarea>
                 <label for="descricao">Descrição</label>
             </div>
@@ -74,15 +84,9 @@
                 <label for="caminho_imagem">Imagem</label>
             </div>
         </div>
-        <div class="form-group-half">
-            <div class="form-group">
-                <input type="number" step="0.01" id="valor" name="valor" required placeholder=" " onKeyPress="return(MascaraMoeda(this,'.',',',event))">
-                <label for="valor">Valor</label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" id="monitor" name="monitor">
-                <label for="monitor">Informe se é Monitor</label>
-            </div>
+        <div class="form-group">
+            <input type="checkbox" id="monitor" name="monitor">
+            <label for="monitor">Informe se é Monitor</label>
         </div>
         <div class="container-btn-cadastrar">
             <button type="submit" class="btn-cadastrar">Cadastrar</button>

@@ -6,7 +6,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">codigo</th>
+                <th scope="col">Código</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Sobrenome</th>
                 <th scope="col">CPF</th>
@@ -23,7 +23,7 @@
                 <td>{{ funcionario.sobrenome }}</td>
                 <td>{{ funcionario.cpfcnpj }}</td>
                 <td>{{ funcionario.cargo }}</td>
-                <td>{{ funcionario.ativo }}</td>
+                <td>{{ 'Sim' if funcionario.ativo else 'Não' }}</td>
                 <td>
                     <a href="{{ url_for('funcionario.funcionario_editar', id=funcionario.id) }}" class="btn btn-primary">Editar</a>
                 </td>
