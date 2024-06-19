@@ -601,6 +601,7 @@ FORMS*/
 
 .form-group input:focus,
 .form-group input:not(:placeholder-shown),
+.form-group select,
 .form-group textarea:focus,
 .form-group textarea:not(:placeholder-shown) {
   padding-top: 20px;

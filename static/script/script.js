@@ -15,6 +15,71 @@ const cpfMask = (value) => {
     return value;
 }
 
+
+/** Validador de CPF */
+
+function validarCPF() {
+    const cpfField = document.getElementById('cpf');
+    const cpfFeedback = document.getElementById('cpfFeedback');
+    let cpf = cpfField.value.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        cpfField.classList.add('is-invalid');
+        cpfFeedback.textContent = 'CPF inválido';
+        cpfFeedback.style.color = 'red';
+        cpfField.setCustomValidity('CPF inválido');
+        return false;
+    }
+
+    let soma = 0;
+    let resto;
+
+    // Calcula o primeiro dígito verificador
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if ((resto === 10) || (resto === 11)) {
+        resto = 0;
+    }
+    if (resto !== parseInt(cpf.substring(9, 10))) {
+        cpfField.classList.add('is-invalid');
+        cpfFeedback.textContent = 'CPF inválido';
+        cpfFeedback.style.color = 'red';
+        cpfField.setCustomValidity('CPF inválido');
+        return false;
+    }
+
+    soma = 0;
+    // Calcula o segundo dígito verificador
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if ((resto === 10) || (resto === 11)) {
+        resto = 0;
+    }
+    if (resto !== parseInt(cpf.substring(10, 11))) {
+        cpfField.classList.add('is-invalid');
+        cpfFeedback.textContent = 'CPF inválido';
+        cpfFeedback.style.color = 'red';
+        cpfField.setCustomValidity('CPF inválido');
+        return false;
+    }
+
+    cpfField.classList.remove('is-invalid');
+    cpfFeedback.textContent = 'CPF válido';
+    cpfFeedback.style.color = 'green';
+    cpfField.setCustomValidity('');
+    return true;
+}
+
+
+
+
+
+
+
 /* Mascara do RG */
 
 const handleRG = (event) => {
@@ -108,6 +173,10 @@ document.getElementById('cep').addEventListener('blur', function () {
             });
     } else {
         alert('CEP inválido.');
+        document.getElementById('logradouro').value = "";
+        document.getElementById('bairro').value = "";
+        document.getElementById('cidade').value = "";
+        document.getElementById('estado').value = "";
     }
 });
 
@@ -159,13 +228,13 @@ function myFunction() {
     var x = document.getElementById("senha");
     var eyes = document.getElementById("icon");
     if (x.type === "password") {
-      x.type = "text";
-      eyes.classList.toggle('hide');
+        x.type = "text";
+        eyes.classList.toggle('hide');
     } else {
-      x.type = "password";
-      eyes.classList.toggle('hide');
+        x.type = "password";
+        eyes.classList.toggle('hide');
     }
-  }
+}
 
 
 /** MODAL POP */
@@ -214,44 +283,44 @@ document.getElementById('cnpj').addEventListener('input', function (e) {
                 <label for="valor">Valor</label>
 */
 
-function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e){  
-    var sep = 0;  
-    var key = '';  
-    var i = j = 0;  
-    var len = len2 = 0;  
-    var strCheck = '0123456789';  
-    var aux = aux2 = '';  
-    var whichCode = (window.Event) ? e.which : e.keyCode;  
-    if (whichCode == 13 || whichCode == 8) return true;  
+function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e) {
+    var sep = 0;
+    var key = '';
+    var i = j = 0;
+    var len = len2 = 0;
+    var strCheck = '0123456789';
+    var aux = aux2 = '';
+    var whichCode = (window.Event) ? e.which : e.keyCode;
+    if (whichCode == 13 || whichCode == 8) return true;
     key = String.fromCharCode(whichCode); // Valor para o código da Chave  
     if (strCheck.indexOf(key) == -1) return false; // Chave inválida  
-    len = objTextBox.value.length;  
-    for(i = 0; i < len; i++)  
-        if ((objTextBox.value.charAt(i) != '0') && (objTextBox.value.charAt(i) != SeparadorDecimal)) break;  
-    aux = '';  
-    for(; i < len; i++)  
-        if (strCheck.indexOf(objTextBox.value.charAt(i))!=-1) aux += objTextBox.value.charAt(i);  
-    aux += key;  
-    len = aux.length;  
-    if (len == 0) objTextBox.value = '';  
-    if (len == 1) objTextBox.value = '0'+ SeparadorDecimal + '0' + aux;  
-    if (len == 2) objTextBox.value = '0'+ SeparadorDecimal + aux;  
-    if (len > 2) {  
-        aux2 = '';  
-        for (j = 0, i = len - 3; i >= 0; i--) {  
-            if (j == 3) {  
-                aux2 += SeparadorMilesimo;  
-                j = 0;  
-            }  
-            aux2 += aux.charAt(i);  
-            j++;  
-        }  
-        objTextBox.value = '';  
-        len2 = aux2.length;  
-        for (i = len2 - 1; i >= 0; i--)  
-        objTextBox.value += aux2.charAt(i);  
-        objTextBox.value += SeparadorDecimal + aux.substr(len - 2, len);  
-    }  
-    return false;  
+    len = objTextBox.value.length;
+    for (i = 0; i < len; i++)
+        if ((objTextBox.value.charAt(i) != '0') && (objTextBox.value.charAt(i) != SeparadorDecimal)) break;
+    aux = '';
+    for (; i < len; i++)
+        if (strCheck.indexOf(objTextBox.value.charAt(i)) != -1) aux += objTextBox.value.charAt(i);
+    aux += key;
+    len = aux.length;
+    if (len == 0) objTextBox.value = '';
+    if (len == 1) objTextBox.value = '0' + SeparadorDecimal + '0' + aux;
+    if (len == 2) objTextBox.value = '0' + SeparadorDecimal + aux;
+    if (len > 2) {
+        aux2 = '';
+        for (j = 0, i = len - 3; i >= 0; i--) {
+            if (j == 3) {
+                aux2 += SeparadorMilesimo;
+                j = 0;
+            }
+            aux2 += aux.charAt(i);
+            j++;
+        }
+        objTextBox.value = '';
+        len2 = aux2.length;
+        for (i = len2 - 1; i >= 0; i--)
+            objTextBox.value += aux2.charAt(i);
+        objTextBox.value += SeparadorDecimal + aux.substr(len - 2, len);
+    }
+    return false;
 }
 
