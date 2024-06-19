@@ -18,11 +18,11 @@
                 </form>
 
                 {% for produto in produtos %}
-                <div class="product">
-                    <div class="product-image-estoque">
+                <div class="product-carrinho">
+                    <div class="product-image-carrinho">
                         <img src="{{ produto['caminho_imagem'] }}" alt="{{ produto['descricao'] }}">
                     </div>
-                    <div class="product-details">
+                    <div class="product-details-carrinho">
                         <div class="product-info">
                             <p><strong>{{ produto['modelo'] }}</strong></p>
                             <p>Marca: {{ produto['marca'] }}</p>
@@ -32,9 +32,9 @@
                             <p>Valor: R$ {{ produto['valor'] | currency_format }}</p>
                             <form action="{{ url_for('carrinho.atualizar_quantidade') }}" method="post">
                                 <input type="hidden" name="product_id" value="{{ produto['id'] }}">
-                                <button type="submit" name="change_type" value="decrement">-</button>
-                                <input type="text" name="quantity" readonly value="{{ produto['quantidade'] }}" size="3">
-                                <button type="submit" name="change_type" value="increment">+</button>
+                                <button type="submit" name="change_type" value="decrement" id="desc-carrinho">-</button>
+                                <input type="text" name="quantity" readonly value="{{ produto['quantidade'] }}" size="3" id="qtd-carrinho">
+                                <button type="submit" name="change_type" value="increment" id="cres-carrinho">+</button>
                             </form>
                             
                         </div>
